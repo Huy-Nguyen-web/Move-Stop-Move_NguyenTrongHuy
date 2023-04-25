@@ -1,0 +1,8 @@
+{
+  "GlobalObjectId_V1-2-ab72c3a0888961045a56b49864856be2-863992706-0": {
+    "GameObjectId": "GlobalObjectId_V1-2-ab72c3a0888961045a56b49864856be2-863992706-0",
+    "CommentText": "All different manager here (Singleton)\n- Game Manager: Control Game State\n- UI Manager: Control UI flow\n- Level Manager: Control level flow\n- Sound Manager: Control all sounds",
+    "AssetGUID": "ab72c3a0888961045a56b49864856be2",
+    "UniqueItemID": "GlobalObjectId_V1-2-ab72c3a0888961045a56b49864856be2-863992706-0"
+  }
+}
