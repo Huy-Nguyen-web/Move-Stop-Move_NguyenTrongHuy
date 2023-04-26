@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackState : PlayerBaseState
+public class PlayerAttackState : IState<Player>
 {
     private float exitTimer;
-    public override void OnStart(Player player) {
+    public void OnStart(Player player) {
         exitTimer = 0f;
         player.animator.SetBool("IsAttack", true);
         player.currentTarget = player.enemyInRange[0];
         player.transform.LookAt(player.currentTarget, Vector3.up);
     }
-    public override void OnUpdate(Player player) {
+    public void OnUpdate(Player player) {
         exitTimer += Time.deltaTime;
         if(exitTimer > 0.7f){
             player.SwitchState(player.playerIdleState);
@@ -20,7 +20,7 @@ public class PlayerAttackState : PlayerBaseState
             player.SwitchState(player.playerMoveState);
         }
     }
-    public override void OnExit(Player player) {
+    public void OnExit(Player player) {
         player.animator.SetBool("IsAttack", false);
     }
 }

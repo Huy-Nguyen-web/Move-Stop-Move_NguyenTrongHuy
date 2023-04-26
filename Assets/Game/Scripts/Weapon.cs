@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hammer : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
+    [SerializeField] private Rigidbody rb;
     private float speed = 10.0f;
-    [SerializeField] private Rigidbody rigidbody;
     private Vector3 startPosition;
     public float maxTravelDistance;
     public GameObject currentCharacter;
 
     private void Start() {
-        rigidbody.velocity = transform.forward * speed;
+        rb.velocity = transform.forward * speed;
         startPosition = transform.position;
     }
     private void Update() {
@@ -21,11 +21,7 @@ public class Hammer : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject == currentCharacter) return;
-        // After killing enemy, going for other enemy
         Character characterScript = currentCharacter.GetComponent<Character>();
-        // characterScript.currentTarget = null;
-        // characterScript.enemyInRange.Remove(other.gameObject);
-
         this.gameObject.SetActive(false);
         other.gameObject.SetActive(false);
     }

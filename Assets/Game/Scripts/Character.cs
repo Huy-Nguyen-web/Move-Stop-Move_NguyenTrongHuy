@@ -13,27 +13,11 @@ public class Character : MonoBehaviour
     public LayerMask characterLayer;
     public float hitRange = 10f;
     public bool isThrowing = false;
-
-    // public void UpdateHitArea(){
-    //     hitArea.transform.localScale = new Vector3(hitRange, hitRange, hitRange);
-    // }
-    // public void UpdateCurrentTarget(){
-    //     if(enemyInRange.Length > 0){
-    //         currentTarget = enemyInRange[0];
-    //     }else{
-    //         currentTarget = null;
-    //     }
-    // }
     public virtual void Attack(){
         transform.LookAt(currentTarget.transform.position);
         if(!isThrowing){
             isThrowing = true;
-            // TODO: Rewrite the GameObject to Hammer
-            GameObject hammer = Instantiate(hammerPrefab, transform.position + transform.forward, transform.rotation);
-            
-            Hammer hammerScript = hammer.GetComponent<Hammer>();
-            hammerScript.currentCharacter = this.gameObject;
-            hammerScript.maxTravelDistance = hitRange/2;
+            // TODO: Rewrite the GameObject to Weapon
         }
     }
     public void UpdateEnemyList(){
@@ -45,4 +29,13 @@ public class Character : MonoBehaviour
            enemyInRange.Add(enemy);
         }
     }
+    // public void SwitchState(IState<Character> state){
+    //     if(currentState != null){
+    //         currentState.OnExit(this);
+    //     }
+    //     currentState = state;
+    //     if(currentState != null){
+    //         currentState.OnStart(this);
+    //     }
+    // }
 }

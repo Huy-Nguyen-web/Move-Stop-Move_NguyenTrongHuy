@@ -9,7 +9,7 @@ public class Player : Character
     [SerializeField] private CharacterController controller;
     [SerializeField] private DynamicJoystick joystick;
     [SerializeField] private AreaCircle areaCircle;
-    public PlayerBaseState currentState;
+    public IState<Player> currentState;
     public PlayerIdleState playerIdleState = new PlayerIdleState();
     public PlayerAttackState playerAttackState = new PlayerAttackState();
     public PlayerMoveState playerMoveState = new PlayerMoveState();
@@ -22,6 +22,7 @@ public class Player : Character
         UpdateMovement();
         currentState.OnUpdate(this);
     }
+
     private void UpdateMovement(){
         Vector3 velocity = Vector3.zero;
         moveDirection = new Vector3(joystick.Horizontal, 0f, joystick.Vertical);
@@ -36,7 +37,7 @@ public class Player : Character
         controller.Move(velocity);
     }
 
-    public void SwitchState(PlayerBaseState newState){
+    public void SwitchState(IState<Player> newState){
         currentState.OnExit(this);
         currentState = newState;
         currentState.OnStart(this);

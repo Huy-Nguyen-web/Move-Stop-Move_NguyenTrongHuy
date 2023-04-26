@@ -2,22 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMoveState : EnemyBaseState
+public class EnemyMoveState : IState<Enemy>
 {
-    public override void OnStart(Enemy enemy) {
+    public void OnStart(Enemy enemy) {
         Debug.Log("Enemy is going to move");
         enemy.navMeshAgent.SetDestination(GetRandomPosition(enemy));
         enemy.animator.SetBool("IsIdle", false);
     }
-    public override void OnUpdate(Enemy enemy) {
+    public void OnUpdate(Enemy enemy) {
         if(enemy.navMeshAgent.remainingDistance < 0.2f){
             enemy.SwitchState(enemy.enemyIdleState);
         }
-        if(enemy.currentTarget != null){
-            enemy.SwitchState(enemy.enemyIdleState);
-        }
     }
-    public override void OnExit(Enemy enemy) {
+    public void OnExit(Enemy enemy) {
 
     }
     private Vector3 GetRandomPosition(Enemy enemy){
