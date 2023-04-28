@@ -22,9 +22,4 @@ public class EnemyAttackState : IState<Enemy>
     public void OnExit(Enemy enemy) {
         enemy.animator.SetBool("IsAttack", false);
     }
-
-    private void ChangeToIdleState(Enemy enemy){
-
-    }
-
 }

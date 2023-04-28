@@ -1,0 +1,30 @@
+# Made using Asset Forge (2.3.0)
+
+:materials
+
+[name:wood;color:RGBA(0.840, 0.435, 0.305, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.35;valueB:0;]
+[name:stoneLight;color:RGBA(0.710, 0.701, 0.840, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.5;valueB:0;]
+[name:stoneDark;color:RGBA(0.403, 0.390, 0.594, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.5;valueB:0;]
+[name:plant;color:RGBA(0.182, 0.821, 0.576, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.5;valueB:0;]
+[name:carpet;color:RGBA(0.943, 0.367, 0.343, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.5;valueB:0;]
+[name:carpetDarker;color:RGBA(0.608, 0.298, 0.285, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.5;valueB:0;]
+[name:carpetWhite;color:RGBA(0.973, 1.000, 1.000, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.5;valueB:0;]
+[name:metal;color:RGBA(0.741, 0.823, 0.840, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.5;valueB:0;]
+[name:_defaultMat;color:RGBA(1.000, 1.000, 1.000, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.5;valueB:0;]
+[name:metalMedium;color:RGBA(0.369, 0.467, 0.467, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.5;valueB:0;]
+
+:models
+
+[name:;collection:Dungeons;type:wall;position:(0.0500, 0.0000, 15.0100);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0000, 3.5000, 30.0001);group:;locked:False;hidden:False;materials:stoneLight+stoneDark;]
+[name:;collection:Dungeons;type:wall;position:(0.0500, 0.0000, -15.0900);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0000, 3.5000, 30.0001);group:;locked:False;hidden:False;materials:stoneLight+stoneDark;]
+[name:;collection:Dungeons;type:wall;position:(-15.0000, 0.0000, -0.0400);rotation:(0.0000, 0.0000, 0.0000);scale:(1.0000, 3.5000, 30.0000);group:;locked:False;hidden:False;materials:stoneLight+stoneDark;]
+[name:;collection:Furniture;type:plantSmall2;position:(-2.5000, 1.2000, 0.5000);rotation:(0.0000, 0.0000, 0.0000);scale:(5.0000, 5.0000, 5.0000);group:;locked:False;hidden:False;materials:wood+plant;]
+[name:;collection:Furniture;type:benchCushion;position:(-1.0000, 0.1000, 1.0000);rotation:(0.0000, 75.0000, 0.0000);scale:(3.0000, 3.0000, 3.0000);group:;locked:False;hidden:False;materials:wood+carpet;]
+[name:;collection:Dungeons;type:wall;position:(15.1000, 0.0000, -0.0400);rotation:(0.0000, 0.0000, 0.0000);scale:(1.0000, 3.5000, 30.0000);group:;locked:False;hidden:False;materials:stoneLight+stoneDark;]
+[name:;collection:Furniture;type:bedDouble;position:(9.6000, 0.0000, 8.8000);rotation:(0.0000, 0.0000, 0.0000);scale:(5.0000, 5.0000, 5.0000);group:;locked:False;hidden:False;materials:carpetWhite+wood+metal+carpet;]
+[name:;collection:Western;type:porch_floorCenter;position:(0.0000, 0.0000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(30.0000, 1.0000, 30.0000);group:;locked:False;hidden:False;materials:wood;]
+[name:;collection:Furniture;type:tableCoffeeSquare;position:(-1.0000, 0.1000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(5.0000, 5.0000, 5.0000);group:;locked:False;hidden:False;materials:wood;]
+[name:;collection:Furniture;type:cabinetBedDrawerTable;position:(8.2000, 0.0000, 13.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(5.0000, 5.0000, 5.0000);group:;locked:False;hidden:False;materials:wood+_defaultMat+metal;]
+[name:;collection:Furniture;type:desk;position:(-3.0000, 0.0000, 13.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(5.0000, 5.0000, 5.0000);group:;locked:False;hidden:False;materials:wood+metal;]
+[name:;collection:Furniture;type:chairDesk;position:(0.0000, 0.1000, 12.6000);rotation:(0.0000, 165.0000, 0.0000);scale:(5.0000, 5.0000, 5.0000);group:;locked:False;hidden:False;materials:metalMedium+carpet;]
+[name:;collection:Furniture;type:books;position:(-2.2000, 1.2000, 1.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(5.0000, 5.0000, 5.0000);group:;locked:False;hidden:False;materials:carpetDarker+carpetWhite+plant+metal;]

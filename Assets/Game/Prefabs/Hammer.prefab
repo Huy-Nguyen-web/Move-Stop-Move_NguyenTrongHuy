@@ -214,6 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dfd59f189efd95449e7b305bfd455ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolType: 0
+  rb: {fileID: 1968313673602067252}
+  startPosition: {x: 0, y: 0, z: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
   maxTravelDistance: 0
   currentCharacter: {fileID: 0}
 --- !u!65 &8778815609688615403

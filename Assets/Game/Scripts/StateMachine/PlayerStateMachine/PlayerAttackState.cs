@@ -10,17 +10,23 @@ public class PlayerAttackState : IState<Player>
         player.animator.SetBool("IsAttack", true);
         player.currentTarget = player.enemyInRange[0];
         player.transform.LookAt(player.currentTarget, Vector3.up);
+        SpawnHammer(player);
     }
     public void OnUpdate(Player player) {
         exitTimer += Time.deltaTime;
         if(exitTimer > 0.7f){
             player.SwitchState(player.playerIdleState);
+            return;
         }
         if(Vector3.Distance(player.moveDirection, Vector3.zero) > 0.1f){
             player.SwitchState(player.playerMoveState);
+            return;
         }
     }
     public void OnExit(Player player) {
         player.animator.SetBool("IsAttack", false);
+    }
+    private void SpawnHammer(Player player){
+        Weapon weapon = LevelManager.Instance.SpawnHammer();
     }
 }
