@@ -5,15 +5,20 @@ using UnityEngine;
 public class PlayerAttackState : IState<Player>
 {
     private float exitTimer;
+    private bool isThrowing;
     public void OnStart(Player player) {
         exitTimer = 0f;
+        isThrowing = false;
         player.animator.SetBool("IsAttack", true);
         player.currentTarget = player.enemyInRange[0];
         player.transform.LookAt(player.currentTarget, Vector3.up);
-        SpawnHammer(player);
     }
     public void OnUpdate(Player player) {
         exitTimer += Time.deltaTime;
+        if(exitTimer > 0.3f && !isThrowing){
+            isThrowing = true;
+            player.SpawnWeapon();
+        }
         if(exitTimer > 0.7f){
             player.SwitchState(player.playerIdleState);
             return;
@@ -25,8 +30,5 @@ public class PlayerAttackState : IState<Player>
     }
     public void OnExit(Player player) {
         player.animator.SetBool("IsAttack", false);
-    }
-    private void SpawnHammer(Player player){
-        Weapon weapon = LevelManager.Instance.SpawnHammer();
     }
 }

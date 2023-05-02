@@ -42,8 +42,9 @@ public class Character : GameUnit
            enemyInRange.Add(enemy);
         }
     }
-    public void SpawnHammer(){
-        Weapon weapon = LevelManager.Instance.SpawnHammer();
+    public void SpawnWeapon(){
+        Weapon weapon = LevelManager.Instance.SpawnWeapon();
         weapon.OnInit(this);
     }
+
 }

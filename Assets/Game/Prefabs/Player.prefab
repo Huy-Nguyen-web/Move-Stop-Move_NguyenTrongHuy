@@ -277,13 +277,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3c9adff06cc2b4f9b3a6a5e122de1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolType: 0
+  AttackPosition: {fileID: 2644173207413989377}
   moveDirection: {x: 0, y: 0, z: 0}
   currentTarget: {fileID: 0}
   hammerPrefab: {fileID: 8192168122595055611, guid: f9d55bd6c69abf341b8497fd35a20e50,
     type: 3}
   enemyInRange: []
-  hitArea: {fileID: 0}
   animator: {fileID: 0}
+  characterLayer:
+    serializedVersion: 2
+    m_Bits: 0
   hitRange: 10
   isThrowing: 0
   speed: 5
@@ -474,6 +478,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 70212537bb759cc42a15466fda89867d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+--- !u!4 &2644173207413989377 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3220319501169496967, guid: 38f9296dc39c27647a0119314baf12a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8646592409351965816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3640150064784664418 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 38f9296dc39c27647a0119314baf12a2,

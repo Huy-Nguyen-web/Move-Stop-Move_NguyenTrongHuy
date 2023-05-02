@@ -11,9 +11,9 @@ public class Weapon : GameUnit
     [HideInInspector] public float maxTravelDistance;
     [HideInInspector] public Character currentCharacter;
     private void Update() {
-        // if(Vector3.Distance(startPosition, transform.position) >= maxTravelDistance){
-        //     OnDespawn();
-        // }
+        if(Vector3.Distance(transform.position, startPosition) > maxTravelDistance){
+            OnDespawn();
+        }
     }
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject == currentCharacter.gameObject) return;
@@ -27,8 +27,9 @@ public class Weapon : GameUnit
     public override void OnDespawn(){
         SimplePool.Despawn(this);
     }
-    public virtual void OnInit(Character character){
+    public void OnInit(Character character){
         transform.position = character.AttackPosition.position;
+        transform.rotation = character.transform.rotation;
         startPosition = character.transform.position;
         moveDirection = character.transform.forward;
         currentCharacter = character;

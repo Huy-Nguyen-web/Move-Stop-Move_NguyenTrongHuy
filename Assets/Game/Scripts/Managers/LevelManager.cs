@@ -11,7 +11,7 @@ public class LevelManager : Singleton<LevelManager>
             SpawnEnemy();
         }
     }
-    public Weapon SpawnHammer(){
+    public Weapon SpawnWeapon(){
         Weapon weapon = SimplePool.Spawn<Weapon>(weaponPrefab);
         return weapon;
     }

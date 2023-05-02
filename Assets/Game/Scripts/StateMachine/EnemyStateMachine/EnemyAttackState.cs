@@ -5,18 +5,23 @@ using UnityEngine;
 public class EnemyAttackState : IState<Enemy>
 {
     private float exitTimer;
+    private bool isThrowing;
     public void OnStart(Enemy enemy) {
         exitTimer = 0f;
+        isThrowing = false;
         enemy.currentTarget = enemy.enemyInRange[0];
         enemy.animator.SetBool("IsAttack", true);
         enemy.transform.LookAt(enemy.currentTarget, Vector3.up);
     }
     public void OnUpdate(Enemy enemy) {
         exitTimer += Time.deltaTime;
-        // Cache.GetWFS(0.7f);
-        // enemy.SwitchState(enemy.enemyIdleState);
+        if(exitTimer > 0.3f && !isThrowing){
+            isThrowing = true;
+            enemy.SpawnWeapon();
+        }
         if(exitTimer > 0.7f){
             enemy.SwitchState(enemy.enemyIdleState);
+            return;
         }
     }
     public void OnExit(Enemy enemy) {

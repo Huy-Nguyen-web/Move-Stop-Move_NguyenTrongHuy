@@ -12,6 +12,7 @@ public class EnemyMoveState : IState<Enemy>
     public void OnUpdate(Enemy enemy) {
         if(enemy.navMeshAgent.remainingDistance < 0.2f){
             enemy.SwitchState(enemy.enemyIdleState);
+            return;
         }
     }
     public void OnExit(Enemy enemy) {

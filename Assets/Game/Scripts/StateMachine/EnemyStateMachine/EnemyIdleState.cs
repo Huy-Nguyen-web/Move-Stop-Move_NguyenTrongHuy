@@ -19,9 +19,11 @@ public class EnemyIdleState : IState<Enemy>
         changeStateTimer += Time.deltaTime;
         if(changeStateTimer >= timeEnd){
             enemy.SwitchState(enemy.enemyMoveState);
+            return;
         }
         if(enemy.enemyInRange.Count > 0){
             enemy.SwitchState(enemy.enemyAttackState);
+            return;
         }
     }
     public void OnExit(Enemy enemy) {
