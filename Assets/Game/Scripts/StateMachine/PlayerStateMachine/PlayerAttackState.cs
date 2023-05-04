@@ -15,7 +15,7 @@ public class PlayerAttackState : IState<Player>
     }
     public void OnUpdate(Player player) {
         exitTimer += Time.deltaTime;
-        if(exitTimer > 0.3f && !isThrowing){
+        if(exitTimer > 0.25f && !isThrowing){
             isThrowing = true;
             player.SpawnWeapon();
         }

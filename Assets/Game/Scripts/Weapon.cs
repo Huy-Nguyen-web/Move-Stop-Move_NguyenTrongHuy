@@ -28,7 +28,7 @@ public class Weapon : GameUnit
         SimplePool.Despawn(this);
     }
     public void OnInit(Character character){
-        transform.position = character.AttackPosition.position;
+        transform.position = character.attackPosition.position;
         transform.rotation = character.transform.rotation;
         startPosition = character.transform.position;
         moveDirection = character.transform.forward;

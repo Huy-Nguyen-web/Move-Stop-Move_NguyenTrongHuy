@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 2
+    agentRadius: 3
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.6666667
+    cellSize: 1
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: db7b0aec665968b4c9cf394f14df7c1f, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: bf95d60ad436ada42a3b59ea1b464a63, type: 2}
 --- !u!1 &99446127 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4738496098938845296, guid: 70393f100cf5965489d69c08becca1e3,
@@ -376,13 +376,13 @@ MonoBehaviour:
   - root: {fileID: 264850718}
     prefab: {fileID: 7430824596879301304, guid: 4c2cf83cdf715a54ca4d7ba6da235ac0,
       type: 3}
-    amount: 20
+    amount: 25
     collect: 0
     clamp: 0
   - root: {fileID: 868122462}
     prefab: {fileID: 8109897730762608090, guid: f9d55bd6c69abf341b8497fd35a20e50,
       type: 3}
-    amount: 20
+    amount: 25
     collect: 0
     clamp: 0
 --- !u!4 &404201800
@@ -892,6 +892,8 @@ MonoBehaviour:
     type: 3}
   enemyPrefab: {fileID: 7430824596879301304, guid: 4c2cf83cdf715a54ca4d7ba6da235ac0,
     type: 3}
+  maxNumberOfEnemy: 70
+  currentNumberOfEnemy: 25
 --- !u!1 &1158272828 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2844733038556365690, guid: 32b6ddc28e26e894cad69de42debbe96,
@@ -1562,7 +1564,7 @@ PrefabInstance:
     - target: {fileID: 1347611128510522104, guid: 70393f100cf5965489d69c08becca1e3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: 1347611128510522104, guid: 70393f100cf5965489d69c08becca1e3,
         type: 3}

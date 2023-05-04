@@ -6,17 +6,20 @@ public class Player : Character
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float gravity = -10f;
-    [SerializeField] private CharacterController controller;
-    [SerializeField] private DynamicJoystick joystick;
+    public DynamicJoystick joystick;
     [SerializeField] private AreaCircle areaCircle;
     public IState<Player> currentState;
+    public CharacterController controller;
     public PlayerIdleState playerIdleState = new PlayerIdleState();
     public PlayerAttackState playerAttackState = new PlayerAttackState();
     public PlayerMoveState playerMoveState = new PlayerMoveState();
+    public PlayerDieState playerDieState = new PlayerDieState();
     private void Start() {
         currentState = playerIdleState;
         currentState.OnStart(this);
         areaCircle.UpdateCircle(hitRange/2);
+        //TEST
+        attackPosition = transform;
     }
     private void Update() {
         UpdateMovement();
@@ -38,8 +41,17 @@ public class Player : Character
     }
 
     public void SwitchState(IState<Player> newState){
-        currentState.OnExit(this);
+        if(currentState != null){
+            currentState.OnExit(this);
+        }
         currentState = newState;
-        currentState.OnStart(this);
+        if(currentState != null){
+            currentState.OnStart(this);
+        }
+    }
+    private void OnTriggerEnter(Collider other) {
+        if(weapon == null || (weapon.gameObject != other.gameObject)){
+            SwitchState(playerDieState);
+        }
     }
 }

@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Character : GameUnit
 {
-    public Transform AttackPosition;
+    public Transform attackPosition;
     public Vector3 moveDirection;
     public Transform currentTarget;
     public GameObject hammerPrefab;
     public List<Transform> enemyInRange;
-    // public Collider hitArea;
+    public Collider characterCollider;
     public Animator animator;
     public LayerMask characterLayer;
     public float hitRange = 10f;
     public bool isThrowing = false;
+    public Weapon weapon;
     
     public virtual void Attack(){
         transform.LookAt(currentTarget.transform.position);
         if(!isThrowing){
             isThrowing = true;
-            // TODO: Rewrite the GameObject to Weapon
         }
     }
 
@@ -43,8 +43,7 @@ public class Character : GameUnit
         }
     }
     public void SpawnWeapon(){
-        Weapon weapon = LevelManager.Instance.SpawnWeapon();
+        weapon = LevelManager.Instance.SpawnWeapon();
         weapon.OnInit(this);
     }
-
 }
