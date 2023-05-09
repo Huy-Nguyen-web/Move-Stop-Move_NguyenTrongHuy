@@ -4,5 +4,18 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    // The game manager is used for controlling different game state
+    public WeaponData[] weapons;
+    public enum GameState {Menu, Weapon, Skin, Start, End};
+    public GameState currentState;
+    private void Start() {
+        currentState = GameState.Menu;
+    }
+    public void StartGame(){
+        currentState = GameState.Start;
+        UIManager.Instance.GameStart();
+    }
+    public void EndGame(){
+        currentState = GameState.End;
+        UIManager.Instance.GameStart();
+    }
 }

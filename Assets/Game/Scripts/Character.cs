@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Character : GameUnit
 {
+    public WeaponData weaponType;
     public Transform attackPosition;
     public Vector3 moveDirection;
     public Transform currentTarget;
-    public GameObject hammerPrefab;
     public List<Transform> enemyInRange;
     public Collider characterCollider;
     public Animator animator;
@@ -41,6 +41,11 @@ public class Character : GameUnit
            Transform enemy = foundCharacter[i].transform;
            enemyInRange.Add(enemy);
         }
+    }
+    public bool CheckEnemyInRange(){
+        Collider[] foundCharacter = Physics.OverlapSphere(transform.position, hitRange/2, characterLayer);
+        if(foundCharacter.Length <= 1) return false;
+        return true;
     }
     public void SpawnWeapon(){
         weapon = LevelManager.Instance.SpawnWeapon();

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cec23037ca6e049b429b3ef80d7461, type: 3}
+  m_Name: Axe
+  m_EditorClassIdentifier: 
+  weaponName: Axe
+  weaponDescription: 
+  weaponModel: {fileID: 100000, guid: 1c040a6e7d23e904b87e93fb9c66a037, type: 3}
+  weaponSpeed: 7
+  weaponExtraRange: 5
+  weaponPrice: 0
+  canReturn: 0
+  canRotate: 1

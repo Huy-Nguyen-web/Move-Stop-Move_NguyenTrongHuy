@@ -15,6 +15,7 @@ public class Enemy : Character
     public override void OnInit()
     {
         base.OnInit();
+        weaponType = CosmeticManager.Instance.weapons[UnityEngine.Random.Range(0, 5)];
         Vector3 randomPoint;
         if(RandomPoint(Vector3.zero, 40.0f, out randomPoint)){
             transform.position = randomPoint;
@@ -24,12 +25,10 @@ public class Enemy : Character
         animator.SetBool("IsDead", false);
         currentState = enemyIdleState;
         currentState.OnStart(this);
-        //TEST
         attackPosition = transform;
     }
-    // private void Start() {
-    // }
     private void Update() {
+        if(GameManager.Instance.currentState != GameManager.GameState.Start) return;
         currentState.OnUpdate(this);
     }
     public void SwitchState(IState<Enemy> newState){

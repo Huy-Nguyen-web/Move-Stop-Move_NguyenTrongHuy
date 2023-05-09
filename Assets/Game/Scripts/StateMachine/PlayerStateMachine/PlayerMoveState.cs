@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMoveState : IState<Player>
 {
     public void OnStart(Player player) {
-        Debug.Log(player.animator.GetBool("IsAttack"));
         player.animator.SetBool("IsIdle", false);
     }
     public void OnUpdate(Player player) {

@@ -6,7 +6,6 @@ public class PlayerIdleState : IState<Player>
 {
     public void OnStart(Player player) {
         player.animator.SetBool("IsIdle", true);
-        Debug.Log("Player on idle");
     }
     public void OnUpdate(Player player) {
         player.UpdateEnemyList();

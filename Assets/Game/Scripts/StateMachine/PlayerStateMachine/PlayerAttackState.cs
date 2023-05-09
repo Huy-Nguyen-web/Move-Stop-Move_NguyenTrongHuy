@@ -19,7 +19,7 @@ public class PlayerAttackState : IState<Player>
             isThrowing = true;
             player.SpawnWeapon();
         }
-        if(exitTimer > 0.7f){
+        if(exitTimer > 1f){
             player.SwitchState(player.playerIdleState);
             return;
         }

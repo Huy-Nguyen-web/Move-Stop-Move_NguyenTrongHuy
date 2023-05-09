@@ -23,7 +23,6 @@ public class LevelManager : Singleton<LevelManager>
         return enemy;
     }
     public void RespawnEnemy(){
-        Debug.Log("Respawn Enemy");
         numberOfEnemyInQueue--;
         if(numberOfEnemyInQueue <= currentNumberOfEnemy) return;
         

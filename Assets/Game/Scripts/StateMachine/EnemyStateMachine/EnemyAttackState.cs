@@ -9,6 +9,7 @@ public class EnemyAttackState : IState<Enemy>
     public void OnStart(Enemy enemy) {
         exitTimer = 0f;
         isThrowing = false;
+        enemy.UpdateEnemyList();
         enemy.currentTarget = enemy.enemyInRange[0];
         enemy.animator.SetBool("IsAttack", true);
         enemy.transform.LookAt(enemy.currentTarget, Vector3.up);
@@ -19,7 +20,7 @@ public class EnemyAttackState : IState<Enemy>
             isThrowing = true;
             enemy.SpawnWeapon();
         }
-        if(exitTimer > 0.7f){
+        if(exitTimer > 1.5f){
             enemy.SwitchState(enemy.enemyIdleState);
             return;
         }

@@ -5,11 +5,15 @@ using UnityEngine;
 public class EnemyMoveState : IState<Enemy>
 {
     public void OnStart(Enemy enemy) {
-        Debug.Log("Enemy is going to move");
         enemy.navMeshAgent.SetDestination(GetRandomPosition(enemy));
+        enemy.navMeshAgent.isStopped = false;
         enemy.animator.SetBool("IsIdle", false);
     }
     public void OnUpdate(Enemy enemy) {
+        if(enemy.CheckEnemyInRange()){
+            enemy.SwitchState(enemy.enemyIdleState);
+            return;
+        }
         if(enemy.navMeshAgent.remainingDistance < 0.2f){
             enemy.SwitchState(enemy.enemyIdleState);
             return;
