@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   weaponName: Axe
-  weaponDescription: 
+  weaponDescription: +5 Range
   weaponModel: {fileID: 100000, guid: 1c040a6e7d23e904b87e93fb9c66a037, type: 3}
   weaponSpeed: 7
   weaponExtraRange: 5

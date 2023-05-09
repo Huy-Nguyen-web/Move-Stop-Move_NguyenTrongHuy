@@ -24,7 +24,7 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void RespawnEnemy(){
         numberOfEnemyInQueue--;
-        if(numberOfEnemyInQueue <= currentNumberOfEnemy) return;
+        if(numberOfEnemyInQueue < currentNumberOfEnemy) return;
         
         Enemy enemy = SpawnEnemy();
         enemy.OnInit();

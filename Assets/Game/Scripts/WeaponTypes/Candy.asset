@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3cec23037ca6e049b429b3ef80d7461, type: 3}
   m_Name: Candy
   m_EditorClassIdentifier: 
-  weaponName: 
-  weaponDescription: 
+  weaponName: Candy
+  weaponDescription: +10 Range
   weaponModel: {fileID: 100000, guid: 77de8014aff37804f92ab58c8817cced, type: 3}
   weaponSpeed: 7
-  weaponExtraRange: 5
+  weaponExtraRange: 10
   weaponPrice: 0
   canReturn: 0
   canRotate: 1

@@ -15,17 +15,22 @@ public class Enemy : Character
     public override void OnInit()
     {
         base.OnInit();
-        weaponType = CosmeticManager.Instance.weapons[UnityEngine.Random.Range(0, 5)];
-        Vector3 randomPoint;
-        if(RandomPoint(Vector3.zero, 40.0f, out randomPoint)){
-            transform.position = randomPoint;
-        }
+        weaponType = CosmeticManager.Instance.weapons[UnityEngine.Random.Range(0, 6)];
+
+        SpawnOnHandWeapon();
+        SpawnAtRandomPosition();
+
         characterCollider.enabled = true;
         navMeshAgent.enabled = true;
         animator.SetBool("IsDead", false);
         currentState = enemyIdleState;
         currentState.OnStart(this);
-        attackPosition = transform;
+    }
+    public override void OnDespawn()
+    {
+        base.OnDespawn();
+        Destroy(onHandWeapon);
+        onHandWeapon = null;
     }
     private void Update() {
         if(GameManager.Instance.currentState != GameManager.GameState.Start) return;
@@ -61,5 +66,11 @@ public class Enemy : Character
         }
         result = Vector3.zero;
         return false;
+    }
+    private void SpawnAtRandomPosition(){
+        Vector3 randomPoint;
+        if(RandomPoint(Vector3.zero, 40.0f, out randomPoint)){
+            transform.position = randomPoint;
+        }
     }
 }

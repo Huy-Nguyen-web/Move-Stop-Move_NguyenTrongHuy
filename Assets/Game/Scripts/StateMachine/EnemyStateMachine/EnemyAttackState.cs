@@ -27,5 +27,7 @@ public class EnemyAttackState : IState<Enemy>
     }
     public void OnExit(Enemy enemy) {
         enemy.animator.SetBool("IsAttack", false);
+        enemy.onHandWeapon.SetActive(true);
+        enemy.currentTarget = null;
     }
 }

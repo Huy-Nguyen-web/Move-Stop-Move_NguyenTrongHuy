@@ -278,11 +278,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolType: 0
-  AttackPosition: {fileID: 2644173207413989377}
+  weaponType: {fileID: 0}
+  attackPosition: {fileID: 2644173207413989377}
   moveDirection: {x: 0, y: 0, z: 0}
   currentTarget: {fileID: 0}
-  hammerPrefab: {fileID: 8192168122595055611, guid: f9d55bd6c69abf341b8497fd35a20e50,
-    type: 3}
   enemyInRange: []
   characterCollider: {fileID: 6326727690250662295}
   animator: {fileID: 6633356894055320088}
@@ -291,11 +290,12 @@ MonoBehaviour:
     m_Bits: 0
   hitRange: 10
   isThrowing: 0
+  weapon: {fileID: 0}
   speed: 5
   gravity: -10
-  controller: {fileID: 1219897174949541525}
   joystick: {fileID: 0}
   areaCircle: {fileID: 5677979201201217850}
+  controller: {fileID: 1219897174949541525}
 --- !u!120 &3953305815598682388
 LineRenderer:
   m_ObjectHideFlags: 0

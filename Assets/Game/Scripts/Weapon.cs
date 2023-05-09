@@ -8,17 +8,25 @@ public class Weapon : GameUnit
     private float speed;
     private float travelExtraRange;
     private GameObject weaponModel;
+    private GameObject[] weaponModels;
     [SerializeField] private Rigidbody rb;
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public Vector3 moveDirection;
     [HideInInspector] public float maxTravelDistance;
     [HideInInspector] public Character currentCharacter;
+    private void Start() {
+        
+    }
     private void Update() {
         if(currentWeapon != null && currentWeapon.canRotate){
             transform.Rotate(0, -1000 * Time.deltaTime, 0);
         }
         if(Vector3.Distance(transform.position, startPosition) > maxTravelDistance){
-            OnDespawn();
+            if(currentWeapon.canReturn){
+                BoomerangBehaviour(currentCharacter);
+            }else{
+                OnDespawn();
+            }
         }
     }
     private void OnTriggerEnter(Collider other) {
@@ -54,5 +62,9 @@ public class Weapon : GameUnit
         weaponModel.transform.localRotation = Quaternion.Euler(-90, 0, 0);
         travelExtraRange = currentWeapon.weaponExtraRange;
         speed = currentWeapon.weaponSpeed;
+    }
+    private void BoomerangBehaviour(Character character){
+        transform.position = Vector3.MoveTowards(transform.position, character.transform.position, 10 * Time.deltaTime);
+        if(Vector3.Distance(transform.position, character.transform.position) <= 0.3f) OnDespawn();
     }
 }

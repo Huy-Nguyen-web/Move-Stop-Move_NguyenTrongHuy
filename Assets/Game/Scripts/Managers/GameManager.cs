@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public WeaponData[] weapons;
     public enum GameState {Menu, Weapon, Skin, Start, End};
     public GameState currentState;
     private void Start() {

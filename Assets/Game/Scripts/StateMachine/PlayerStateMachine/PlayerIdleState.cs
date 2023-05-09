@@ -18,7 +18,6 @@ public class PlayerIdleState : IState<Player>
             return;
         }
     }
-    
     public void OnExit(Player player) {
 
     }

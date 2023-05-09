@@ -12,6 +12,7 @@ public class Character : GameUnit
     public Collider characterCollider;
     public Animator animator;
     public LayerMask characterLayer;
+    public GameObject onHandWeapon;
     public float hitRange = 10f;
     public bool isThrowing = false;
     public Weapon weapon;
@@ -50,5 +51,10 @@ public class Character : GameUnit
     public void SpawnWeapon(){
         weapon = LevelManager.Instance.SpawnWeapon();
         weapon.OnInit(this);
+        onHandWeapon.SetActive(false);
+    }
+    public void SpawnOnHandWeapon(){
+        onHandWeapon = Instantiate(weaponType.weaponModel, attackPosition);
+        onHandWeapon.transform.localRotation = Quaternion.Euler(180, 0 ,0);
     }
 }

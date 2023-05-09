@@ -15,7 +15,10 @@ public class Player : Character
     public PlayerMoveState playerMoveState = new PlayerMoveState();
     public PlayerDieState playerDieState = new PlayerDieState();
     private void Start() {
-        weaponType = CosmeticManager.Instance.weapons[0];
+        weaponType = CosmeticManager.Instance.weapons[5];
+
+        SpawnOnHandWeapon();
+
         currentState = playerIdleState;
         currentState.OnStart(this);
         areaCircle.UpdateCircle(hitRange/2);

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Hammer
   m_EditorClassIdentifier: 
   weaponName: Hammer
-  weaponDescription: +0 Range
+  weaponDescription: +1 Range
   weaponModel: {fileID: 100000, guid: 90389cac50942cb4ca38583e6531094a, type: 3}
   weaponSpeed: 7
-  weaponExtraRange: 0
+  weaponExtraRange: 1
   weaponPrice: 0
   canReturn: 0
   canRotate: 1

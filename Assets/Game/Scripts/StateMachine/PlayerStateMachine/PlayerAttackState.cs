@@ -29,6 +29,8 @@ public class PlayerAttackState : IState<Player>
         }
     }
     public void OnExit(Player player) {
+        player.currentTarget = null;
         player.animator.SetBool("IsAttack", false);
+        player.onHandWeapon.SetActive(true);
     }
 }

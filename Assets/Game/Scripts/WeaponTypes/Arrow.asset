@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Arrow
   m_EditorClassIdentifier: 
   weaponName: Arrow
-  weaponDescription: +5 speed
+  weaponDescription: +10 speed
   weaponModel: {fileID: -927199367670048503, guid: ceffb78c74021304889ac584f173d156,
     type: 3}
-  weaponSpeed: 15
+  weaponSpeed: 17
   weaponExtraRange: 0
   weaponPrice: 0
   canReturn: 0

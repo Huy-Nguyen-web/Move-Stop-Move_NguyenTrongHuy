@@ -137,11 +137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolType: 0
-  attackPosition: {fileID: 0}
+  weaponType: {fileID: 0}
+  attackPosition: {fileID: 7234442923569629545}
   moveDirection: {x: 0, y: 0, z: 0}
   currentTarget: {fileID: 0}
-  hammerPrefab: {fileID: 8192168122595055611, guid: f9d55bd6c69abf341b8497fd35a20e50,
-    type: 3}
   enemyInRange: []
   characterCollider: {fileID: 8030235862136764581}
   animator: {fileID: 2079098374300017520}
@@ -251,6 +250,12 @@ PrefabInstance:
 --- !u!95 &2079098374300017520 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 38f9296dc39c27647a0119314baf12a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3975209504554067216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7234442923569629545 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3220319501169496967, guid: 38f9296dc39c27647a0119314baf12a2,
     type: 3}
   m_PrefabInstance: {fileID: 3975209504554067216}
   m_PrefabAsset: {fileID: 0}
