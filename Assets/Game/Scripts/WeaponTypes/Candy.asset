@@ -18,5 +18,5 @@ MonoBehaviour:
   weaponSpeed: 7
   weaponExtraRange: 10
   weaponPrice: 0
-  canReturn: 0
+  canReturn: 1
   canRotate: 1

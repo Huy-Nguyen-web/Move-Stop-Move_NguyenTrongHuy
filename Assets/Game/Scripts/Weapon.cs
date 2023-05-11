@@ -7,15 +7,17 @@ public class Weapon : GameUnit
     private WeaponData currentWeapon;
     private float speed;
     private float travelExtraRange;
+    private bool isReturning;
     private GameObject weaponModel;
     private GameObject[] weaponModels;
+    private Vector3 throwingPosition;
     [SerializeField] private Rigidbody rb;
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public Vector3 moveDirection;
     [HideInInspector] public float maxTravelDistance;
     [HideInInspector] public Character currentCharacter;
     private void Start() {
-        
+
     }
     private void Update() {
         if(currentWeapon != null && currentWeapon.canRotate){
@@ -23,10 +25,17 @@ public class Weapon : GameUnit
         }
         if(Vector3.Distance(transform.position, startPosition) > maxTravelDistance){
             if(currentWeapon.canReturn){
-                BoomerangBehaviour(currentCharacter);
+                isReturning = true;
             }else{
                 OnDespawn();
             }
+        }
+        if(isReturning){
+            if(currentCharacter.isDead){
+                OnDespawn();
+                return;
+            } 
+            BoomerangBehaviour(throwingPosition);
         }
     }
     private void OnTriggerEnter(Collider other) {
@@ -43,11 +52,13 @@ public class Weapon : GameUnit
             Destroy(weaponModel);
         }
         SimplePool.Despawn(this);
+        isReturning = false;
     }
     public void OnInit(Character character){
         UpdateWeapon(character);
         transform.position = character.attackPosition.position;
         transform.rotation = character.transform.rotation;
+        throwingPosition = transform.position;
 
         startPosition = character.transform.position;
         moveDirection = character.transform.forward;
@@ -63,8 +74,8 @@ public class Weapon : GameUnit
         travelExtraRange = currentWeapon.weaponExtraRange;
         speed = currentWeapon.weaponSpeed;
     }
-    private void BoomerangBehaviour(Character character){
-        transform.position = Vector3.MoveTowards(transform.position, character.transform.position, 10 * Time.deltaTime);
-        if(Vector3.Distance(transform.position, character.transform.position) <= 0.3f) OnDespawn();
+    private void BoomerangBehaviour(Vector3 characterPosition){
+        transform.position = Vector3.MoveTowards(transform.position, throwingPosition, 10 * Time.deltaTime);
+        if(Vector3.Distance(transform.position, characterPosition) <= 0.3f) OnDespawn();
     }
 }

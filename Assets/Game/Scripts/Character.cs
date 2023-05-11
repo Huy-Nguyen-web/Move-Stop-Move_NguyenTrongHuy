@@ -15,6 +15,7 @@ public class Character : GameUnit
     public GameObject onHandWeapon;
     public float hitRange = 10f;
     public bool isThrowing = false;
+    public bool isDead = false;
     public Weapon weapon;
     
     public virtual void Attack(){
@@ -56,5 +57,12 @@ public class Character : GameUnit
     public void SpawnOnHandWeapon(){
         onHandWeapon = Instantiate(weaponType.weaponModel, attackPosition);
         onHandWeapon.transform.localRotation = Quaternion.Euler(180, 0 ,0);
+    }
+    public void ChangeOnHandWeapon(WeaponData currentWeaponType){
+        if(onHandWeapon != null){
+            Destroy(onHandWeapon);
+        }
+        weaponType = currentWeaponType;
+        SpawnOnHandWeapon();
     }
 }

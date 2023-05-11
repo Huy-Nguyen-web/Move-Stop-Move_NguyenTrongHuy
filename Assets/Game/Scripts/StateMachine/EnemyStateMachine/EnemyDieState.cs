@@ -12,6 +12,7 @@ public class EnemyDieState : IState<Enemy>
         enemy.characterCollider.enabled = false;
         enemy.navMeshAgent.enabled = false;
         enemy.animator.SetBool("IsDead", true);
+        enemy.isDead = true;
     }
     public void OnUpdate(Enemy enemy){
         exitTimer += Time.deltaTime;
@@ -22,7 +23,7 @@ public class EnemyDieState : IState<Enemy>
         }
     }
     public void OnExit(Enemy enemy){
-
+        enemy.isDead = false;
     }
 
 }

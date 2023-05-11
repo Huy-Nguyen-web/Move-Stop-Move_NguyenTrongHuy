@@ -15,14 +15,14 @@ public class Player : Character
     public PlayerMoveState playerMoveState = new PlayerMoveState();
     public PlayerDieState playerDieState = new PlayerDieState();
     private void Start() {
-        weaponType = CosmeticManager.Instance.weapons[5];
-
+        weaponType = CosmeticManager.Instance.currentWeapon;
         SpawnOnHandWeapon();
+        
+        CosmeticManager.Instance.onWeaponChange += ChangeOnHandWeapon;
 
         currentState = playerIdleState;
         currentState.OnStart(this);
         areaCircle.UpdateCircle(hitRange/2);
-        attackPosition = transform;
     }
     private void Update() {
         if(GameManager.Instance.currentState != GameManager.GameState.Start) return;

@@ -15,8 +15,8 @@ MonoBehaviour:
   weaponName: Boomerang
   weaponDescription: +5 Range x 2
   weaponModel: {fileID: 100000, guid: 6083ff9012eefa348b00b8c543f1a742, type: 3}
-  weaponSpeed: 7
-  weaponExtraRange: 0
+  weaponSpeed: 10
+  weaponExtraRange: 1
   weaponPrice: 0
-  canReturn: 0
+  canReturn: 1
   canRotate: 1
