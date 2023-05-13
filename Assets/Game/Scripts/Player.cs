@@ -23,6 +23,8 @@ public class Player : Character
         currentState = playerIdleState;
         currentState.OnStart(this);
         areaCircle.UpdateCircle(hitRange/2);
+
+        ChangeCharacterMaterial();
     }
     private void Update() {
         if(GameManager.Instance.currentState != GameManager.GameState.Start) return;

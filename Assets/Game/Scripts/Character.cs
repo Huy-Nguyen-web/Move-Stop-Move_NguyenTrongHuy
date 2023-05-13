@@ -10,6 +10,8 @@ public class Character : GameUnit
     public Transform currentTarget;
     public List<Transform> enemyInRange;
     public Collider characterCollider;
+    public SkinnedMeshRenderer characterSkin;
+    public SkinnedMeshRenderer characterPantSkin;
     public Animator animator;
     public LayerMask characterLayer;
     public GameObject onHandWeapon;
@@ -64,5 +66,9 @@ public class Character : GameUnit
         }
         weaponType = currentWeaponType;
         SpawnOnHandWeapon();
+    }
+    public void ChangeCharacterMaterial(){
+        characterSkin.material = CosmeticManager.Instance.skinColor[Random.Range(0, 8)];
+        characterPantSkin.material = CosmeticManager.Instance.pantColor[Random.Range(0, 9)];
     }
 }

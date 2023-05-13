@@ -16,6 +16,7 @@ public class PlayerDieState : IState<Player>
         exitTimer += Time.deltaTime;
         if(exitTimer >= 2.0f){
             //TODO: Show the game over UI
+            GameManager.Instance.GameEnd();
             Debug.Log("Player die");
         }
     }

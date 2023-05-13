@@ -20,6 +20,7 @@ public class Enemy : Character
 
         SpawnOnHandWeapon();
         SpawnAtRandomPosition();
+        ChangeCharacterMaterial();
 
         transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
 

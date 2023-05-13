@@ -143,12 +143,16 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   enemyInRange: []
   characterCollider: {fileID: 8030235862136764581}
+  characterSkin: {fileID: 3489200942701982714}
+  characterPantSkin: {fileID: 5732304194530129561}
   animator: {fileID: 2079098374300017520}
   characterLayer:
     serializedVersion: 2
     m_Bits: 64
+  onHandWeapon: {fileID: 0}
   hitRange: 10
   isThrowing: 0
+  isDead: 0
   weapon: {fileID: 0}
   navMeshAgent: {fileID: 8710339130388036222}
   range: 10
@@ -250,6 +254,18 @@ PrefabInstance:
 --- !u!95 &2079098374300017520 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 38f9296dc39c27647a0119314baf12a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3975209504554067216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3489200942701982714 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8699012472884554006, guid: 38f9296dc39c27647a0119314baf12a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3975209504554067216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5732304194530129561 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -529177695146175607, guid: 38f9296dc39c27647a0119314baf12a2,
     type: 3}
   m_PrefabInstance: {fileID: 3975209504554067216}
   m_PrefabAsset: {fileID: 0}

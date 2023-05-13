@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -9,12 +10,15 @@ public class GameManager : Singleton<GameManager>
     private void Start() {
         currentState = GameState.Menu;
     }
-    public void StartGame(){
+    public void GameStart(){
         currentState = GameState.Start;
         UIManager.Instance.GameStart();
     }
-    public void EndGame(){
+    public void GameEnd(){
         currentState = GameState.End;
-        UIManager.Instance.GameStart();
+        UIManager.Instance.GameEnd();
+    }
+    public void GameReset(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
