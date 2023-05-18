@@ -15,8 +15,11 @@ public class Enemy : Character
     public override void OnInit()
     {
         base.OnInit();
-        weaponType = CosmeticManager.Instance.weapons[UnityEngine.Random.Range(0, 6)];
+        point = 0;
+        // weaponType = CosmeticManager.Instance.weapons[UnityEngine.Random.Range(0, 6)];
+        weaponType = CosmeticManager.Instance.weapons[4];
 
+        ResizeCharacter();
         SpawnOnHandWeapon();
         SpawnAtRandomPosition();
         ChangeCharacterMaterial();

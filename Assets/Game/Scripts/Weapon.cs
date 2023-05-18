@@ -29,11 +29,14 @@ public class Weapon : GameUnit
 
         startPosition = character.transform.position;
         moveDirection = character.transform.forward;
+
         currentCharacter = character;
         currentCharacter.isDead = false;
-        maxTravelDistance = character.hitRange/2 + travelExtraRange + 1.0f;
+        maxTravelDistance = (character.hitRange/2 + travelExtraRange + 1.0f) * character.characterSize;
 
         rb.velocity = moveDirection * speed;
+
+        // transform.localScale = new Vector3(character.characterSize, character.characterSize, character.characterSize);
     }
     private void Update() {
         // Update visual

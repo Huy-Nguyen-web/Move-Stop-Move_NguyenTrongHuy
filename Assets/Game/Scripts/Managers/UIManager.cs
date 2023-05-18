@@ -12,6 +12,7 @@ public class UIManager : Singleton<UIManager>
     public Canvas skinShopUI;
     public Canvas inGameUI;
     public Canvas endGameUI;
+    public Player player;
     private void Start() {
         stateUI.Add(GameState.Menu, mainMenuUI);
         stateUI.Add(GameState.Start, inGameUI);
@@ -39,6 +40,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void MainMenu(){
         currentState = GameState.Menu;
+        player.DeleteTempSkin();
         OpenUI(stateUI, currentState);
     }
     private void OpenUI(Dictionary<GameState, Canvas> stateUI, GameState currentState){

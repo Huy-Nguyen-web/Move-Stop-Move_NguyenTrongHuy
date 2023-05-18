@@ -14,17 +14,29 @@ public class Player : Character
     public PlayerAttackState playerAttackState = new PlayerAttackState();
     public PlayerMoveState playerMoveState = new PlayerMoveState();
     public PlayerDieState playerDieState = new PlayerDieState();
+    private int currentSelectedPant = -1;
+    private int currentSelectedHat = -1;
+    private Material defaultPantMaterial;
+
     private void Start() {
+        point = 0;
+        defaultPantMaterial = characterPantSkin.material;
+        ResizeCharacter();
+
+        characterSize = 1f;
         weaponType = CosmeticManager.Instance.currentWeapon;
         SpawnOnHandWeapon();
         
         CosmeticManager.Instance.onWeaponChange += ChangeOnHandWeapon;
         CosmeticManager.Instance.onPantChange += ChangeCharacterPant;
         CosmeticManager.Instance.onHatChange += ChangeCharacterHat;
+        CosmeticManager.Instance.onSelectedHatChange += ChangeSelectedHat;
+        CosmeticManager.Instance.onSelectedPantChange += ChangeSelectedPant;
+        
 
         currentState = playerIdleState;
         currentState.OnStart(this);
-        areaCircle.UpdateCircle(hitRange/2);
+        areaCircle.UpdateCircle(hitRange/2 + weaponType.weaponExtraRange);
 
         ChangeCharacterMaterial();
     }
@@ -57,9 +69,28 @@ public class Player : Character
             currentState.OnStart(this);
         }
     }
+    public void DeleteTempSkin(){
+        if(currentSelectedHat == -1 && this.hat != null){
+            Destroy(this.hat);
+        }
+        if(currentSelectedPant == -1){
+            characterPantSkin.material = defaultPantMaterial;
+        }
+    }
     private void OnTriggerEnter(Collider other) {
         if(weapon == null || (weapon.gameObject != other.gameObject)){
             SwitchState(playerDieState);
         }
+    }
+    private void ChangeSelectedHat(int index){
+        currentSelectedHat = index;
+    }
+    private void ChangeSelectedPant(int index){
+        currentSelectedPant = index;
+    }
+    public override void ChangeOnHandWeapon(WeaponData currentWeaponType)
+    {
+        base.ChangeOnHandWeapon(currentWeaponType);
+        areaCircle.UpdateCircle(hitRange/2 + weaponType.weaponExtraRange);
     }
 }

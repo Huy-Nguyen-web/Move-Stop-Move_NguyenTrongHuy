@@ -14,7 +14,7 @@ public class SkinShopUI : MonoBehaviour
 
     public List<TabButton> tabButtons = new List<TabButton>();
     public List<GameObject> contents = new List<GameObject>();
-    public TabButton selectedTab;
+    [HideInInspector] public TabButton selectedTab;
     [SerializeField] private RectTransform pantButtonContainer;
     [SerializeField] private RectTransform hatButtonContainer;
     [SerializeField] private RectTransform skinButtonContainer;
@@ -44,8 +44,14 @@ public class SkinShopUI : MonoBehaviour
     public void ChangePant(int index){
         CosmeticManager.Instance.ChangeCurrentPant(index);
     }
+    public void SelectPant(int index){
+        CosmeticManager.Instance.ChangeSelectedPant(index);
+    }
     public void ChangeHat(int index){
         CosmeticManager.Instance.ChangeCurrentHat(index);
+    }
+    public void SelectHat(int index){
+        CosmeticManager.Instance.ChangeSelectedHat(index);
     }
     public void Subscribe(TabButton button){
         tabButtons.Add(button);

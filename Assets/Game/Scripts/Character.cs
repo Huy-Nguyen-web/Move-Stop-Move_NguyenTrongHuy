@@ -22,7 +22,9 @@ public class Character : GameUnit
     public bool isThrowing = false;
     public bool isDead = false;
     public Weapon weapon;
-    private int point;
+    public int point;
+    public float characterSize;
+    private int[] characterSizePoints = new int[] {2, 4 ,6, 8, 10};
     
     public virtual void Attack(){
         TF.LookAt(currentTarget.transform.position);
@@ -43,7 +45,7 @@ public class Character : GameUnit
 
     public void UpdateEnemyList(){
         //TODO: OverlapSphereNonAlloc
-        Collider[] foundCharacter = Physics.OverlapSphere(transform.position, hitRange/2, characterLayer);
+        Collider[] foundCharacter = Physics.OverlapSphere(transform.position, ((hitRange/2) + weaponType.weaponExtraRange) * characterSize, characterLayer);
         enemyInRange.Clear();
         for(int i = 0; i < foundCharacter.Length; i++){
            if(foundCharacter[i].transform == transform) continue;
@@ -52,7 +54,7 @@ public class Character : GameUnit
         }
     }
     public bool CheckEnemyInRange(){
-        Collider[] foundCharacter = Physics.OverlapSphere(transform.position, hitRange/2, characterLayer);
+        Collider[] foundCharacter = Physics.OverlapSphere(transform.position, ((hitRange/2) + weaponType.weaponExtraRange) * characterSize, characterLayer);
         if(foundCharacter.Length <= 1) return false;
         return true;
     }
@@ -65,7 +67,7 @@ public class Character : GameUnit
         onHandWeapon = Instantiate(weaponType.weaponModel, attackPosition);
         onHandWeapon.transform.localRotation = Quaternion.Euler(180, 0 ,0);
     }
-    public void ChangeOnHandWeapon(WeaponData currentWeaponType){
+    public virtual void ChangeOnHandWeapon(WeaponData currentWeaponType){
         if(onHandWeapon != null){
             Destroy(onHandWeapon);
         }
@@ -91,53 +93,22 @@ public class Character : GameUnit
         ResizeCharacter();
     }
     public void ResizeCharacter(){
-        switch(point){
-            case 2:
-                transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
-                break;
-            case 4:
-                transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-                break;
-            case 6:
-                transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
-                break;
-            case 8:
-                transform.localScale = new Vector3(2.1f, 2.1f, 2.1f);
-                break;
-            case 10:
-                transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
-                break;
-        } 
+        if(point < 2){
+            characterSize = 1f;
+        }else if(point >= 2 && point < 4){
+            characterSize = 1.2f;
+        }else if(point >= 4 && point < 6){
+            characterSize = 1.5f;
+        }else if(point >= 6 && point < 8){
+            characterSize = 1.8f;
+        }else if(point >= 8 && point < 10){
+            characterSize = 2.1f;
+        }else if(point >= 10){
+            characterSize = 2.5f;
+        }
+        transform.localScale = new Vector3(characterSize, characterSize, characterSize);
     }
-    public void ChangeWeapon(WeaponType weaponType){
+    // public void CheckSize(){
 
-    }
-
-    public void ChangeHat(HatType hatType){
-
-    }
-
-    public void ChangePant(PantType pantType){
-
-    }
-}
-
-public enum WeaponType 
-{
-    Hammer_1 = 0,
-    Hammer_2 = 1, 
-    Hammer_3 = 2,
-
-    Knife_1 = 10,
-    Knife_2 = 11,
-
-}
-
-
-public enum HatType{
-
-}
-
-public enum PantType{
-
-}
+    // }
+}   

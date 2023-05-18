@@ -15,6 +15,8 @@ public class CosmeticManager : Singleton<CosmeticManager>
     public UnityAction<WeaponData> onWeaponChange;
     public UnityAction<SkinData> onPantChange;
     public UnityAction<SkinData> onHatChange;
+    public UnityAction<int> onSelectedPantChange;
+    public UnityAction<int> onSelectedHatChange;
     private void Awake() {
         currentWeapon = weapons[0];
     }
@@ -29,5 +31,11 @@ public class CosmeticManager : Singleton<CosmeticManager>
     public void ChangeCurrentHat(int hatIndex){
         currentHat = hats[hatIndex];
         onHatChange?.Invoke(currentHat);
+    }
+    public void ChangeSelectedPant(int pantIndex){
+        onSelectedPantChange?.Invoke(pantIndex);
+    }
+    public void ChangeSelectedHat(int hatIndex){
+        onSelectedHatChange?.Invoke(hatIndex);
     }
 }
