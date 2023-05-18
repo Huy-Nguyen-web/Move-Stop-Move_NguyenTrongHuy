@@ -280,17 +280,19 @@ MonoBehaviour:
   poolType: 0
   weaponType: {fileID: 0}
   attackPosition: {fileID: 2644173207413989377}
+  hatPosition: {fileID: 4376613643616128784}
   moveDirection: {x: 0, y: 0, z: 0}
   currentTarget: {fileID: 0}
   enemyInRange: []
   characterCollider: {fileID: 6326727690250662295}
-  characterMaterial: {fileID: 8122307636063722130}
-  characterPantMaterial: {fileID: 1105957294388273137}
+  characterSkin: {fileID: 0}
+  characterPantSkin: {fileID: 0}
   animator: {fileID: 6633356894055320088}
   characterLayer:
     serializedVersion: 2
     m_Bits: 0
   onHandWeapon: {fileID: 0}
+  pantMaterial: {fileID: 0}
   hitRange: 10
   isThrowing: 0
   isDead: 0
@@ -483,12 +485,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 70212537bb759cc42a15466fda89867d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
---- !u!137 &1105957294388273137 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -529177695146175607, guid: 38f9296dc39c27647a0119314baf12a2,
-    type: 3}
-  m_PrefabInstance: {fileID: 8646592409351965816}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2644173207413989377 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3220319501169496967, guid: 38f9296dc39c27647a0119314baf12a2,
@@ -501,15 +497,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8646592409351965816}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &6633356894055320088 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 38f9296dc39c27647a0119314baf12a2,
+--- !u!4 &4376613643616128784 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3800467336962686104, guid: 38f9296dc39c27647a0119314baf12a2,
     type: 3}
   m_PrefabInstance: {fileID: 8646592409351965816}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &8122307636063722130 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -8699012472884554006, guid: 38f9296dc39c27647a0119314baf12a2,
+--- !u!95 &6633356894055320088 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 38f9296dc39c27647a0119314baf12a2,
     type: 3}
   m_PrefabInstance: {fileID: 8646592409351965816}
   m_PrefabAsset: {fileID: 0}

@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a71b941a0f1dcb04ead510d9b9bf98f8, type: 3}
-  m_Name: Pant
+  m_Name: OnionPant
   m_EditorClassIdentifier: 
-  skinName: Pant1
+  skinName: Onion Pant
   skinDescription: 
-  skinModel: {fileID: 0}
+  skinMaterial: {fileID: 2100000, guid: 96b9dd438050d59459975e376de567c3, type: 2}
   equimentType: 0
+  skinIcon: {fileID: 21300000, guid: be770e2a4bda55147bff7cac14cb8b34, type: 3}
   skinPrice: 0

@@ -15,8 +15,7 @@ public class Enemy : Character
     public override void OnInit()
     {
         base.OnInit();
-        // weaponType = CosmeticManager.Instance.weapons[UnityEngine.Random.Range(0, 6)];
-        weaponType = CosmeticManager.Instance.weapons[3];
+        weaponType = CosmeticManager.Instance.weapons[UnityEngine.Random.Range(0, 6)];
 
         SpawnOnHandWeapon();
         SpawnAtRandomPosition();
@@ -37,7 +36,7 @@ public class Enemy : Character
         onHandWeapon = null;
     }
     private void Update() {
-        if(GameManager.Instance.currentState != GameManager.GameState.Start) return;
+        if(!GameManager.IsState(GameManager.GameState.Start)) return;
         currentState.OnUpdate(this);
     }
     public void SwitchState(IState<Enemy> newState){

@@ -19,6 +19,8 @@ public class Player : Character
         SpawnOnHandWeapon();
         
         CosmeticManager.Instance.onWeaponChange += ChangeOnHandWeapon;
+        CosmeticManager.Instance.onPantChange += ChangeCharacterPant;
+        CosmeticManager.Instance.onHatChange += ChangeCharacterHat;
 
         currentState = playerIdleState;
         currentState.OnStart(this);
@@ -27,7 +29,7 @@ public class Player : Character
         ChangeCharacterMaterial();
     }
     private void Update() {
-        if(GameManager.Instance.currentState != GameManager.GameState.Start) return;
+        if(!GameManager.IsState(GameManager.GameState.Start)) return;
         UpdateMovement();
         currentState.OnUpdate(this);
     }

@@ -29,4 +29,22 @@ public class LevelManager : Singleton<LevelManager>
         Enemy enemy = SpawnEnemy();
         enemy.OnInit();
     }
+
+
+    public void LoadLevel(int level){
+
+    }
+
+    public void OnInit(){
+
+    }
+
+    public void OnReset(){
+
+    }
+
+    public Vector3 GetRandomPoint(){
+        return Vector3.zero;
+    }
+
 }

@@ -6,6 +6,7 @@ public class Character : GameUnit
 {
     public WeaponData weaponType;
     public Transform attackPosition;
+    public Transform hatPosition;
     public Vector3 moveDirection;
     public Transform currentTarget;
     public List<Transform> enemyInRange;
@@ -15,13 +16,16 @@ public class Character : GameUnit
     public Animator animator;
     public LayerMask characterLayer;
     public GameObject onHandWeapon;
+    public GameObject hat;
+    public Material pantMaterial;
     public float hitRange = 10f;
     public bool isThrowing = false;
     public bool isDead = false;
     public Weapon weapon;
+    private int point;
     
     public virtual void Attack(){
-        transform.LookAt(currentTarget.transform.position);
+        TF.LookAt(currentTarget.transform.position);
         if(!isThrowing){
             isThrowing = true;
         }
@@ -38,6 +42,7 @@ public class Character : GameUnit
     }
 
     public void UpdateEnemyList(){
+        //TODO: OverlapSphereNonAlloc
         Collider[] foundCharacter = Physics.OverlapSphere(transform.position, hitRange/2, characterLayer);
         enemyInRange.Clear();
         for(int i = 0; i < foundCharacter.Length; i++){
@@ -67,8 +72,72 @@ public class Character : GameUnit
         weaponType = currentWeaponType;
         SpawnOnHandWeapon();
     }
+    public void ChangeCharacterHat(SkinData hatType){
+        if(this.hat != null){
+            Destroy(this.hat);
+        }
+        this.hat = Instantiate(hatType.HatModel, hatPosition);
+    }
     public void ChangeCharacterMaterial(){
         characterSkin.material = CosmeticManager.Instance.skinColor[Random.Range(0, 8)];
-        characterPantSkin.material = CosmeticManager.Instance.pantColor[Random.Range(0, 9)];
     }
+
+    public void ChangeCharacterPant(SkinData currentPant){
+        characterPantSkin.material = currentPant.skinMaterial;
+    }
+
+    public void AddPoint(int pointToGet){
+        this.point += pointToGet;
+        ResizeCharacter();
+    }
+    public void ResizeCharacter(){
+        switch(point){
+            case 2:
+                transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+                break;
+            case 4:
+                transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                break;
+            case 6:
+                transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+                break;
+            case 8:
+                transform.localScale = new Vector3(2.1f, 2.1f, 2.1f);
+                break;
+            case 10:
+                transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+                break;
+        } 
+    }
+    public void ChangeWeapon(WeaponType weaponType){
+
+    }
+
+    public void ChangeHat(HatType hatType){
+
+    }
+
+    public void ChangePant(PantType pantType){
+
+    }
+}
+
+public enum WeaponType 
+{
+    Hammer_1 = 0,
+    Hammer_2 = 1, 
+    Hammer_3 = 2,
+
+    Knife_1 = 10,
+    Knife_2 = 11,
+
+}
+
+
+public enum HatType{
+
+}
+
+public enum PantType{
+
 }

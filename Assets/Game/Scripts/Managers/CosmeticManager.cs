@@ -6,12 +6,15 @@ using UnityEngine.Events;
 public class CosmeticManager : Singleton<CosmeticManager>
 {
     public Material[] skinColor;
-    public Material[] pantColor;
+    public SkinData[] pantColor;
+    public SkinData[] hats;
     public WeaponData[] weapons;
-    public WeaponData currentWeapon;
-    public Material currentPant;
+    [HideInInspector] public WeaponData currentWeapon;
+    [HideInInspector] public SkinData currentPant;
+    [HideInInspector] public SkinData currentHat;
     public UnityAction<WeaponData> onWeaponChange;
-    public UnityAction<Material> onPantChange;
+    public UnityAction<SkinData> onPantChange;
+    public UnityAction<SkinData> onHatChange;
     private void Awake() {
         currentWeapon = weapons[0];
     }
@@ -22,5 +25,9 @@ public class CosmeticManager : Singleton<CosmeticManager>
     public void ChangeCurrentPant(int pantIndex){
         currentPant = pantColor[pantIndex];
         onPantChange?.Invoke(currentPant);
+    }
+    public void ChangeCurrentHat(int hatIndex){
+        currentHat = hats[hatIndex];
+        onHatChange?.Invoke(currentHat);
     }
 }

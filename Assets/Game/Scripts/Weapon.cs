@@ -19,27 +19,37 @@ public class Weapon : GameUnit
     private void Start() {
 
     }
+    public void OnInit(Character character){
+        UpdateWeapon(character);
+        transform.position = character.attackPosition.position;
+        transform.rotation = character.transform.rotation;
+        throwingPosition = transform.position;
+
+        isReturning = false;
+
+        startPosition = character.transform.position;
+        moveDirection = character.transform.forward;
+        currentCharacter = character;
+        currentCharacter.isDead = false;
+        maxTravelDistance = character.hitRange/2 + travelExtraRange + 1.0f;
+
+        rb.velocity = moveDirection * speed;
+    }
     private void Update() {
+        // Update visual
         if(currentWeapon != null && currentWeapon.canRotate){
             transform.Rotate(0, -1000 * Time.deltaTime, 0);
         }
-        if(Vector3.Distance(transform.position, startPosition) > maxTravelDistance){
-            if(currentWeapon.canReturn){
-                isReturning = true;
-            }else{
-                OnDespawn();
-            }
-        }
-        if(isReturning){
-            if(currentCharacter.isDead){
-                OnDespawn();
-                return;
-            } 
-            BoomerangBehaviour(throwingPosition);
+
+        if(!isReturning){
+            GoForward();
+        }else{
+            GoBack(throwingPosition);
         }
     }
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject == currentCharacter.gameObject) return;
+        currentCharacter.AddPoint(2);
         OnDespawn();
     }
 
@@ -52,20 +62,6 @@ public class Weapon : GameUnit
             Destroy(weaponModel);
         }
         SimplePool.Despawn(this);
-        isReturning = false;
-    }
-    public void OnInit(Character character){
-        UpdateWeapon(character);
-        transform.position = character.attackPosition.position;
-        transform.rotation = character.transform.rotation;
-        throwingPosition = transform.position;
-
-        startPosition = character.transform.position;
-        moveDirection = character.transform.forward;
-        currentCharacter = character;
-        maxTravelDistance = character.hitRange/2 + travelExtraRange + 1.0f;
-
-        rb.velocity = moveDirection * speed;
     }
     private void UpdateWeapon(Character character){
         currentWeapon = character.weaponType;
@@ -74,8 +70,28 @@ public class Weapon : GameUnit
         travelExtraRange = currentWeapon.weaponExtraRange;
         speed = currentWeapon.weaponSpeed;
     }
-    private void BoomerangBehaviour(Vector3 characterPosition){
-        transform.position = Vector3.MoveTowards(transform.position, throwingPosition, 10 * Time.deltaTime);
-        if(Vector3.Distance(transform.position, characterPosition) <= 0.3f) OnDespawn();
+    private void GoForward(){
+        if(Vector3.Distance(transform.position, startPosition) > maxTravelDistance){
+            if(currentWeapon.canReturn){
+                isReturning = true;
+            }else{
+                OnDespawn();
+            }
+        }
+    }
+    private void GoBack(Vector3 characterPosition){
+        moveDirection = (characterPosition - transform.position).normalized;
+        rb.velocity = moveDirection * speed;
+        if(currentCharacter.isDead){
+            Debug.Log("Cannot go back");
+            OnDespawn();
+            return;
+        } 
+        // transform.position = Vector3.MoveTowards(transform.position, throwingPosition, 10 * Time.deltaTime);
+        if(Vector3.Distance(transform.position, characterPosition) <= 0.3f){
+            OnDespawn();
+            return;
+        } 
+        Debug.Log("Go Back");
     }
 }

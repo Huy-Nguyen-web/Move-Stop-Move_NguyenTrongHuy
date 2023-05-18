@@ -25,4 +25,5 @@ public class AreaCircle : MonoBehaviour
             lineRenderer.SetPosition(i, pos);
         }
     }
+    
 }

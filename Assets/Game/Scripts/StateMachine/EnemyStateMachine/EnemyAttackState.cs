@@ -11,8 +11,12 @@ public class EnemyAttackState : IState<Enemy>
         isThrowing = false;
         enemy.UpdateEnemyList();
         enemy.currentTarget = enemy.enemyInRange[0];
-        enemy.animator.SetBool("IsAttack", true);
-        enemy.transform.LookAt(enemy.currentTarget, Vector3.up);
+        enemy.animator.SetBool(Constant.ANIM_ATTACK, true);
+        
+        //TODO: quy tac dong goi
+        //enemy.ChangeAnim("IsAttack");
+        //TODO: cache transform
+        enemy.TF.LookAt(enemy.currentTarget, Vector3.up);
     }
     public void OnUpdate(Enemy enemy) {
         exitTimer += Time.deltaTime;

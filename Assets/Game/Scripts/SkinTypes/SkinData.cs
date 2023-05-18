@@ -9,6 +9,8 @@ public class SkinData : ScriptableObject
     public string skinName;
     public string skinDescription;
     public Material skinMaterial;
+    public GameObject HatModel;
     public EquimentType equimentType;
+    public Sprite skinIcon;
     public int skinPrice;
 }

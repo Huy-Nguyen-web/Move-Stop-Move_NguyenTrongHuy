@@ -29,8 +29,12 @@ public class UIManager : Singleton<UIManager>
         currentState = GameState.End;
         OpenUI(stateUI, currentState);
     }
-    public void OpenShop(){
+    public void OpenWeaponShop(){
         currentState = GameState.Weapon;
+        OpenUI(stateUI, currentState);
+    }
+    public void OpenSkinShop(){
+        currentState = GameState.Skin;
         OpenUI(stateUI, currentState);
     }
     public void MainMenu(){
