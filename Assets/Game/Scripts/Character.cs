@@ -18,6 +18,7 @@ public class Character : GameUnit
     public GameObject onHandWeapon;
     public GameObject hat;
     public Material pantMaterial;
+    public WaypointUI characterWaypoint;
     public float hitRange = 10f;
     public bool isThrowing = false;
     public bool isDead = false;
@@ -40,7 +41,7 @@ public class Character : GameUnit
 
     public override void OnInit()
     {
-
+        Debug.Log("init");
     }
 
     public void UpdateEnemyList(){
@@ -66,6 +67,13 @@ public class Character : GameUnit
     public void SpawnOnHandWeapon(){
         onHandWeapon = Instantiate(weaponType.weaponModel, attackPosition);
         onHandWeapon.transform.localRotation = Quaternion.Euler(180, 0 ,0);
+    }
+    public void SpawnWaypoint(){
+        characterWaypoint = LevelManager.Instance.SpawnWaypoint();
+        characterWaypoint.OnInit(this);
+    }
+    public void DespawnWaypoint(){
+        SimplePool.Despawn(characterWaypoint);
     }
     public virtual void ChangeOnHandWeapon(WeaponData currentWeaponType){
         if(onHandWeapon != null){

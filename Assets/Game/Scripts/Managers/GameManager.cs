@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    
     public enum GameState {Menu, Weapon, Skin, Start, End};
     public GameState currentState;
     private void Start() {
@@ -21,7 +22,6 @@ public class GameManager : Singleton<GameManager>
     public void GameReset(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
     public static void ChangeState(GameState gameState) => GameManager.Instance.currentState = gameState;
     public static bool IsState(GameState gameState) => GameManager.Instance.currentState == gameState;
 }

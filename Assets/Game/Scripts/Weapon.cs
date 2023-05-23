@@ -31,6 +31,7 @@ public class Weapon : GameUnit
         moveDirection = character.transform.forward;
 
         currentCharacter = character;
+        
         currentCharacter.isDead = false;
         maxTravelDistance = (character.hitRange/2 + travelExtraRange + 1.0f) * character.characterSize;
 

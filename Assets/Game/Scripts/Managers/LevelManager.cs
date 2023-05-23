@@ -3,6 +3,7 @@ using UnityEngine;
 public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private Weapon weaponPrefab;
+    [SerializeField] private WaypointUI waypointPrefab;
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private int maxNumberOfEnemy;
     [SerializeField] private int currentNumberOfEnemy;
@@ -21,6 +22,10 @@ public class LevelManager : Singleton<LevelManager>
     public Enemy SpawnEnemy(){
         Enemy enemy = SimplePool.Spawn<Enemy>(enemyPrefab);
         return enemy;
+    }
+    public WaypointUI SpawnWaypoint(){
+        WaypointUI waypoint = SimplePool.Spawn<WaypointUI>(waypointPrefab);
+        return waypoint;
     }
     public void RespawnEnemy(){
         numberOfEnemyInQueue--;

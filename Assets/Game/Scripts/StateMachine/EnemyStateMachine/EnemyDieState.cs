@@ -13,6 +13,7 @@ public class EnemyDieState : IState<Enemy>
         enemy.navMeshAgent.enabled = false;
         enemy.animator.SetBool("IsDead", true);
         enemy.isDead = true;
+        enemy.DespawnWaypoint();
     }
     public void OnUpdate(Enemy enemy){
         exitTimer += Time.deltaTime;

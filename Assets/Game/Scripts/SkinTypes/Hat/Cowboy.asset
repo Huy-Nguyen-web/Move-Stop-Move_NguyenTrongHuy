@@ -19,4 +19,4 @@ MonoBehaviour:
     type: 3}
   equimentType: 1
   skinIcon: {fileID: 21300000, guid: 7ecc7cd28cb66fb41ac2e56ca5e22d5c, type: 3}
-  skinPrice: 0
+  skinPrice: 500

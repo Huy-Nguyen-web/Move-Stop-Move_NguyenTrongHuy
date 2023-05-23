@@ -15,6 +15,7 @@ MonoBehaviour:
   skinName: Rainbow Pant
   skinDescription: 
   skinMaterial: {fileID: 2100000, guid: e6d67e8cee29742419fa936eb58afb2f, type: 2}
+  HatModel: {fileID: 0}
   equimentType: 0
   skinIcon: {fileID: 21300000, guid: 17737506398ad284aa00a46f0508ac61, type: 3}
-  skinPrice: 0
+  skinPrice: 500

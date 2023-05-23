@@ -38,4 +38,11 @@ public class CosmeticManager : Singleton<CosmeticManager>
     public void ChangeSelectedHat(int hatIndex){
         onSelectedHatChange?.Invoke(hatIndex);
     }
+    public void SetCoin(int coinAmount){
+        PlayerPrefs.SetInt("Coin", coinAmount);
+    }
+    public int GetCoin(){
+        int coinAmount = PlayerPrefs.GetInt("Coin");
+        return coinAmount;
+    }
 }
