@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     
     public enum GameState {Menu, Weapon, Skin, Start, End};
-    public GameState currentState;
+    private GameState currentState;
     private void Start() {
         currentState = GameState.Menu;
     }

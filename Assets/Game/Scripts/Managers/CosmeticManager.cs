@@ -17,11 +17,17 @@ public class CosmeticManager : Singleton<CosmeticManager>
     public UnityAction<SkinData> onHatChange;
     public UnityAction<int> onSelectedPantChange;
     public UnityAction<int> onSelectedHatChange;
+    private int currentWeaponIndex;
     private void Awake() {
-        currentWeapon = weapons[0];
+        if(!PlayerPrefs.HasKey("currentWeapon")){
+            PlayerPrefs.SetInt("currentWeapon", 0);
+        }
+        currentWeaponIndex = PlayerPrefs.GetInt("currentWeapon");
+        currentWeapon = weapons[currentWeaponIndex];
     }
     public void ChangeCurrentWeapon(int weaponIndex){
         currentWeapon = weapons[weaponIndex];
+        PlayerPrefs.SetInt("currentWeapon", weaponIndex);
         onWeaponChange?.Invoke(currentWeapon);
     }
     public void ChangeCurrentPant(int pantIndex){

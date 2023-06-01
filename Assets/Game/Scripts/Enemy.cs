@@ -15,15 +15,14 @@ public class Enemy : Character
     public override void OnInit()
     {
         base.OnInit();
-        SpawnWaypoint();
         point = 0;
-        // weaponType = CosmeticManager.Instance.weapons[UnityEngine.Random.Range(0, 6)];
-        weaponType = CosmeticManager.Instance.weapons[4];
+        weaponType = CosmeticManager.Instance.weapons[UnityEngine.Random.Range(0, 6)];
 
         ResizeCharacter();
-        SpawnOnHandWeapon();
+        SpawnOnHandWeapon(weaponType);
         SpawnAtRandomPosition();
         ChangeCharacterMaterial();
+        SpawnWaypoint();
 
         transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
 

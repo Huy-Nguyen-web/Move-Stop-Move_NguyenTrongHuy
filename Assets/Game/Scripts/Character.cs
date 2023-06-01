@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Character : GameUnit
 {
@@ -23,9 +24,12 @@ public class Character : GameUnit
     public bool isThrowing = false;
     public bool isDead = false;
     public Weapon weapon;
-    public int point;
+    public int point = 1;
     public float characterSize;
+    public int characterColorIndex;
     private int[] characterSizePoints = new int[] {2, 4 ,6, 8, 10};
+    public UnityAction<int> updateCharacterPoint;
+    public string characterName;
     
     public virtual void Attack(){
         TF.LookAt(currentTarget.transform.position);
@@ -41,7 +45,7 @@ public class Character : GameUnit
 
     public override void OnInit()
     {
-        Debug.Log("init");
+
     }
 
     public void UpdateEnemyList(){
@@ -64,7 +68,7 @@ public class Character : GameUnit
         weapon.OnInit(this);
         onHandWeapon.SetActive(false);
     }
-    public void SpawnOnHandWeapon(){
+    public void SpawnOnHandWeapon(WeaponData weapon){
         onHandWeapon = Instantiate(weaponType.weaponModel, attackPosition);
         onHandWeapon.transform.localRotation = Quaternion.Euler(180, 0 ,0);
     }
@@ -80,7 +84,7 @@ public class Character : GameUnit
             Destroy(onHandWeapon);
         }
         weaponType = currentWeaponType;
-        SpawnOnHandWeapon();
+        SpawnOnHandWeapon(currentWeaponType);
     }
     public void ChangeCharacterHat(SkinData hatType){
         if(this.hat != null){
@@ -89,7 +93,8 @@ public class Character : GameUnit
         this.hat = Instantiate(hatType.HatModel, hatPosition);
     }
     public void ChangeCharacterMaterial(){
-        characterSkin.material = CosmeticManager.Instance.skinColor[Random.Range(0, 8)];
+        characterColorIndex = Random.Range(0,8);
+        characterSkin.material = CosmeticManager.Instance.skinColor[characterColorIndex];
     }
 
     public void ChangeCharacterPant(SkinData currentPant){
@@ -98,25 +103,26 @@ public class Character : GameUnit
 
     public void AddPoint(int pointToGet){
         this.point += pointToGet;
+        updateCharacterPoint?.Invoke(this.point);
         ResizeCharacter();
     }
     public void ResizeCharacter(){
-        if(point < 2){
+        if(point < characterSizePoints[0]){
             characterSize = 1f;
-        }else if(point >= 2 && point < 4){
+        }else if(point >= characterSizePoints[0] && point < characterSizePoints[1]){
             characterSize = 1.2f;
-        }else if(point >= 4 && point < 6){
+        }else if(point >= characterSizePoints[1] && point < characterSizePoints[2]){
             characterSize = 1.5f;
-        }else if(point >= 6 && point < 8){
+        }else if(point >= characterSizePoints[2] && point < characterSizePoints[3]){
             characterSize = 1.8f;
-        }else if(point >= 8 && point < 10){
+        }else if(point >= characterSizePoints[3] && point < characterSizePoints[4]){
             characterSize = 2.1f;
-        }else if(point >= 10){
+        }else if(point >= characterSizePoints[4]){
             characterSize = 2.5f;
         }
         transform.localScale = new Vector3(characterSize, characterSize, characterSize);
     }
-    // public void CheckSize(){
+    public void ChangeCharacterName(string characterName){
 
-    // }
-}   
+    }
+}

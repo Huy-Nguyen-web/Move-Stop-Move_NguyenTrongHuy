@@ -43,6 +43,9 @@ public class UIManager : Singleton<UIManager>
         player.DeleteTempSkin();
         OpenUI(stateUI, currentState);
     }
+    public void ChangeCharacterName(string name){
+        player.ChangeCharacterName(name);
+    }
     private void OpenUI(Dictionary<GameState, Canvas> stateUI, GameState currentState){
         foreach(var gameState in stateUI.Keys){
             if(gameState == currentState){
@@ -52,4 +55,5 @@ public class UIManager : Singleton<UIManager>
             }
         }
     }
+    
 }

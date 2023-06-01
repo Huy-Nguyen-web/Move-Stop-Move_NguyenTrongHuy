@@ -21,11 +21,13 @@ public class Player : Character
     private void Start() {
         point = 0;
         defaultPantMaterial = characterPantSkin.material;
-        ResizeCharacter();
 
         characterSize = 1f;
         weaponType = CosmeticManager.Instance.currentWeapon;
-        SpawnOnHandWeapon();
+
+        ResizeCharacter();
+        SpawnOnHandWeapon(weaponType);
+        SpawnWaypoint();
         
         CosmeticManager.Instance.onWeaponChange += ChangeOnHandWeapon;
         CosmeticManager.Instance.onPantChange += ChangeCharacterPant;
