@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -13,6 +14,8 @@ public class UIManager : Singleton<UIManager>
     public Canvas inGameUI;
     public Canvas endGameUI;
     public Player player;
+    [SerializeField] private TMP_InputField inputField;
+
     private void Start() {
         stateUI.Add(GameState.Menu, mainMenuUI);
         stateUI.Add(GameState.Start, inGameUI);
@@ -43,8 +46,9 @@ public class UIManager : Singleton<UIManager>
         player.DeleteTempSkin();
         OpenUI(stateUI, currentState);
     }
-    public void ChangeCharacterName(string name){
-        player.ChangeCharacterName(name);
+    public void ChangeCharacterName(){
+        player.ChangeCharacterName(inputField.text);
+        PlayerPrefs.SetString("playerName", inputField.text);
     }
     private void OpenUI(Dictionary<GameState, Canvas> stateUI, GameState currentState){
         foreach(var gameState in stateUI.Keys){

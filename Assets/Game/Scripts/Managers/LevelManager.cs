@@ -7,6 +7,7 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private int maxNumberOfEnemy;
     [SerializeField] private int currentNumberOfEnemy;
+    [SerializeField] private string[] characterRandomNames;
     private int numberOfEnemyInQueue;
     public void Start(){
         numberOfEnemyInQueue = maxNumberOfEnemy;
@@ -34,16 +35,16 @@ public class LevelManager : Singleton<LevelManager>
         Enemy enemy = SpawnEnemy();
         enemy.OnInit();
     }
-
-
     public void LoadLevel(int level){
 
     }
-
     public void OnInit(){
 
     }
-
+    public string GetRandomName(){
+        string characterRandomName = characterRandomNames[Random.Range(0, characterRandomNames.Length - 1)]; 
+        return characterRandomName;
+    }
     public void OnReset(){
 
     }
@@ -51,5 +52,4 @@ public class LevelManager : Singleton<LevelManager>
     public Vector3 GetRandomPoint(){
         return Vector3.zero;
     }
-
 }

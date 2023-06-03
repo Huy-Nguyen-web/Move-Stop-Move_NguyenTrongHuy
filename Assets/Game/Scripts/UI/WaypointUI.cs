@@ -10,6 +10,7 @@ public class WaypointUI : GameUnit
     public RectTransform rectSize;
     public Image arrowImage;
     public TMP_Text characterScoreText;
+    public TMP_Text characterNameText;
     private Vector3 middleScreenPosition;
     private Character currentCharacter;
 
@@ -63,9 +64,13 @@ public class WaypointUI : GameUnit
         
         rectSize.position = new Vector2(pos.x, newPosY);
         characterScoreText.transform.position = rectSize.position;
+        characterNameText.transform.position = new Vector3(rectSize.position.x, rectSize.position.y + 100, rectSize.position.z);
     }
     public void OnUpdateCharacterPoint(int point){
         characterScoreText.text = point.ToString();
+    }
+    public void UpdateCharacterName(string characterName){
+        characterNameText.text = characterName;
     }
     public override void OnInit()
     {

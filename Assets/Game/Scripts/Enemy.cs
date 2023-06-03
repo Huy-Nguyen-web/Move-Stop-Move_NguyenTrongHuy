@@ -23,6 +23,7 @@ public class Enemy : Character
         SpawnAtRandomPosition();
         ChangeCharacterMaterial();
         SpawnWaypoint();
+        ChangeCharacterName(LevelManager.Instance.GetRandomName());
 
         transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
 
@@ -60,7 +61,7 @@ public class Enemy : Character
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 100; i++)
         {
             Vector3 randomPoint = center + UnityEngine.Random.insideUnitSphere * range;
             NavMeshHit hit;
@@ -75,7 +76,7 @@ public class Enemy : Character
     }
     private void SpawnAtRandomPosition(){
         Vector3 randomPoint;
-        if(RandomPoint(Vector3.zero, 40.0f, out randomPoint)){
+        if(RandomPoint(Vector3.zero, 35.0f, out randomPoint)){
             transform.position = randomPoint;
         }
     }

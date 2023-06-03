@@ -34,13 +34,13 @@ public class Player : Character
         CosmeticManager.Instance.onHatChange += ChangeCharacterHat;
         CosmeticManager.Instance.onSelectedHatChange += ChangeSelectedHat;
         CosmeticManager.Instance.onSelectedPantChange += ChangeSelectedPant;
-        
 
         currentState = playerIdleState;
         currentState.OnStart(this);
         areaCircle.UpdateCircle(hitRange/2 + weaponType.weaponExtraRange);
 
         ChangeCharacterMaterial();
+        ChangeCharacterName(DataManager.Instance.GetName());
     }
     private void Update() {
         if(!GameManager.IsState(GameManager.GameState.Start)) return;

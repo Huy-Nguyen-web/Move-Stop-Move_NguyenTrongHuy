@@ -27,7 +27,7 @@ public class Character : GameUnit
     public int point = 1;
     public float characterSize;
     public int characterColorIndex;
-    private int[] characterSizePoints = new int[] {2, 4 ,6, 8, 10};
+    private int[] characterSizePoints = new int[] {2, 6, 16, 28, 40};
     public UnityAction<int> updateCharacterPoint;
     public string characterName;
     
@@ -106,6 +106,12 @@ public class Character : GameUnit
         updateCharacterPoint?.Invoke(this.point);
         ResizeCharacter();
     }
+    public void ChangeCharacterName(string characterName){
+        this.characterName = characterName;
+        Debug.Log(characterName);
+        
+        characterWaypoint.UpdateCharacterName(characterName);
+    }
     public void ResizeCharacter(){
         if(point < characterSizePoints[0]){
             characterSize = 1f;
@@ -121,8 +127,5 @@ public class Character : GameUnit
             characterSize = 2.5f;
         }
         transform.localScale = new Vector3(characterSize, characterSize, characterSize);
-    }
-    public void ChangeCharacterName(string characterName){
-
     }
 }
