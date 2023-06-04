@@ -16,9 +16,6 @@ public class Weapon : GameUnit
     [HideInInspector] public Vector3 moveDirection;
     [HideInInspector] public float maxTravelDistance;
     [HideInInspector] public Character currentCharacter;
-    private void Start() {
-
-    }
     public void OnInit(Character character){
         UpdateWeapon(character);
         transform.position = character.attackPosition.position;
@@ -36,11 +33,9 @@ public class Weapon : GameUnit
         maxTravelDistance = (character.hitRange/2 + travelExtraRange + 1.0f) * character.characterSize;
 
         rb.velocity = moveDirection * speed;
-
-        // transform.localScale = new Vector3(character.characterSize, character.characterSize, character.characterSize);
+        
     }
     private void Update() {
-        // Update visual
         if(currentWeapon != null && currentWeapon.canRotate){
             transform.Rotate(0, -1000 * Time.deltaTime, 0);
         }
@@ -67,6 +62,7 @@ public class Weapon : GameUnit
         }
         SimplePool.Despawn(this);
     }
+    
     private void UpdateWeapon(Character character){
         currentWeapon = character.weaponType;
         weaponModel = Instantiate(currentWeapon.weaponModel, transform);
@@ -96,6 +92,5 @@ public class Weapon : GameUnit
             OnDespawn();
             return;
         } 
-        Debug.Log("Go Back");
     }
 }

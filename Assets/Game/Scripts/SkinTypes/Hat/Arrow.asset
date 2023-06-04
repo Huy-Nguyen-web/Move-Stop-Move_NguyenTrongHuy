@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71b941a0f1dcb04ead510d9b9bf98f8, type: 3}
   m_Name: Arrow
   m_EditorClassIdentifier: 
-  skinName: Arrow
+  skinName: ArrowHat
   skinDescription: 
   skinMaterial: {fileID: 0}
   HatModel: {fileID: 7139432400678784068, guid: db22e2611d1249e4598fb43987df879c,

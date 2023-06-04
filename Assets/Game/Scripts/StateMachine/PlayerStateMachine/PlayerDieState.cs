@@ -18,10 +18,9 @@ public class PlayerDieState : IState<Player>
             //TODO: Show the game over UI
             GameManager.ChangeState(GameManager.GameState.End);
             GameManager.Instance.GameEnd();
-            Debug.Log("Player die");
         }
     }
     public void OnExit(Player player){
-
+        
     }
 }

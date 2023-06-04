@@ -53,8 +53,12 @@ public class Enemy : Character
         }
     }
     private void OnTriggerEnter(Collider other) {
-        if(weapon == null || (weapon.gameObject != other.gameObject)){
-            SwitchState(enemyDieState);
+        if(other.CompareTag("Weapon")){
+            if(weapon == null || (weapon.gameObject != other.gameObject)){
+                SwitchState(enemyDieState);
+            }
+        }else if(other.CompareTag("Present")){
+
         }
     }
         public float range = 10.0f;

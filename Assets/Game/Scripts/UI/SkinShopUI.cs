@@ -45,6 +45,7 @@ public class SkinShopUI : MonoBehaviour
         CosmeticManager.Instance.ChangeCurrentPant(index);
     }
     public void SelectPant(int index){
+        Debug.Log("Change pant no. " + index);
         CosmeticManager.Instance.ChangeSelectedPant(index);
     }
     public void ChangeHat(int index){

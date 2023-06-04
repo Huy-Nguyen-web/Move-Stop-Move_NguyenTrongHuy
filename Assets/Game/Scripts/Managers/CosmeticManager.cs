@@ -19,15 +19,12 @@ public class CosmeticManager : Singleton<CosmeticManager>
     public UnityAction<int> onSelectedHatChange;
     private int currentWeaponIndex;
     private void Awake() {
-        if(!PlayerPrefs.HasKey("currentWeapon")){
-            PlayerPrefs.SetInt("currentWeapon", 0);
-        }
-        currentWeaponIndex = PlayerPrefs.GetInt("currentWeapon");
+        currentWeaponIndex = DataManager.Instance.GetWeaponIndex();
         currentWeapon = weapons[currentWeaponIndex];
     }
     public void ChangeCurrentWeapon(int weaponIndex){
         currentWeapon = weapons[weaponIndex];
-        PlayerPrefs.SetInt("currentWeapon", weaponIndex);
+        DataManager.Instance.SetWeaponIndex(weaponIndex);
         onWeaponChange?.Invoke(currentWeapon);
     }
     public void ChangeCurrentPant(int pantIndex){
@@ -42,13 +39,7 @@ public class CosmeticManager : Singleton<CosmeticManager>
         onSelectedPantChange?.Invoke(pantIndex);
     }
     public void ChangeSelectedHat(int hatIndex){
+        Debug.Log("Change selected hat no. " + hatIndex);
         onSelectedHatChange?.Invoke(hatIndex);
-    }
-    public void SetCoin(int coinAmount){
-        PlayerPrefs.SetInt("Coin", coinAmount);
-    }
-    public int GetCoin(){
-        int coinAmount = PlayerPrefs.GetInt("Coin");
-        return coinAmount;
     }
 }

@@ -6,8 +6,17 @@ public class DataManager : Singleton<DataManager>
 {
     public string playerName;
     public int playerWeaponIndex;
+    public int playerHatIndex;
+    public int playerPantIndex;
     public int playerCoins;
+
     private void Start() {
+        for(int i = 0; i < CosmeticManager.instance.weapons.Length;i++){
+            var weaponName = CosmeticManager.instance.weapons[i].weaponName;
+            if(!PlayerPrefs.HasKey(weaponName)){
+                SetBoughtItem(weaponName, false);
+            }
+        }
         if(!PlayerPrefs.HasKey("playerName")){
             SetName("You");
         }
@@ -17,7 +26,7 @@ public class DataManager : Singleton<DataManager>
         }
         playerWeaponIndex = GetWeaponIndex();
         if(!PlayerPrefs.HasKey("playerCoins")){
-            SetCoin(0);
+            SetCoin(1000);
         }
         playerCoins = GetCoin();
     }
@@ -38,5 +47,14 @@ public class DataManager : Singleton<DataManager>
     }
     public int GetCoin(){
         return PlayerPrefs.GetInt("playerCoins");
+    }
+    public bool CheckHasBoughtItem(string itemName){
+        if(PlayerPrefs.HasKey(itemName)){
+            return PlayerPrefs.GetInt(itemName) == 1;
+        }
+        return false;
+    }
+    public void SetBoughtItem(string itemName, bool hasBought){
+        PlayerPrefs.SetInt(itemName, hasBought ? 1 : 0);
     }
 }

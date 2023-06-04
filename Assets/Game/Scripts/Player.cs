@@ -7,7 +7,7 @@ public class Player : Character
     [SerializeField] private float speed = 5f;
     [SerializeField] private float gravity = -10f;
     public DynamicJoystick joystick;
-    [SerializeField] private AreaCircle areaCircle;
+    public AreaCircle areaCircle;
     public IState<Player> currentState;
     public CharacterController controller;
     public PlayerIdleState playerIdleState = new PlayerIdleState();
@@ -17,13 +17,15 @@ public class Player : Character
     private int currentSelectedPant = -1;
     private int currentSelectedHat = -1;
     private Material defaultPantMaterial;
-
+    private Character enemyKiller;
     private void Start() {
         point = 0;
         defaultPantMaterial = characterPantSkin.material;
 
         characterSize = 1f;
         weaponType = CosmeticManager.Instance.currentWeapon;
+
+        gotPresent = false;
 
         ResizeCharacter();
         SpawnOnHandWeapon(weaponType);
@@ -80,8 +82,15 @@ public class Player : Character
         }
     }
     private void OnTriggerEnter(Collider other) {
-        if(weapon == null || (weapon.gameObject != other.gameObject)){
-            SwitchState(playerDieState);
+        if(other.CompareTag("Weapon")){
+            if(weapon == null || (weapon.gameObject != other.gameObject)){
+                SwitchState(playerDieState);
+            }
+        }else if(other.CompareTag("Present")){
+            other.gameObject.SetActive(false);
+            gotPresent = true;
+            hitRange = 50f;
+            areaCircle.UpdateCircle(hitRange/2 + weaponType.weaponExtraRange);
         }
     }
     private void ChangeSelectedHat(int index){
@@ -95,4 +104,5 @@ public class Player : Character
         base.ChangeOnHandWeapon(currentWeaponType);
         areaCircle.UpdateCircle(hitRange/2 + weaponType.weaponExtraRange);
     }
+
 }

@@ -18,8 +18,9 @@ public class WeaponShopUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI selectButtonText;
     private void Start() {
         weaponModelRenderLayer = LayerMask.NameToLayer("Water");
-        currentWeaponIndex = 0;
-        currentSelectedWeapon = 0;
+        Debug.Log(DataManager.Instance.playerWeaponIndex);
+        currentWeaponIndex = DataManager.Instance.playerWeaponIndex;
+        currentSelectedWeapon = DataManager.Instance.playerWeaponIndex;
         maxWeaponAmount = CosmeticManager.Instance.weapons.Length - 1;
         for(int i = 0; i <= maxWeaponAmount; i++){
             GameObject weaponModel = Instantiate(CosmeticManager.Instance.weapons[i].weaponModel, weaponContainer);
@@ -42,12 +43,17 @@ public class WeaponShopUI : MonoBehaviour
     private void UpdateWeaponUI(){
         weaponName.text = CosmeticManager.Instance.weapons[currentWeaponIndex].weaponName;
         weaponDescription.text = CosmeticManager.Instance.weapons[currentWeaponIndex].weaponDescription;
-        if(currentWeaponIndex == currentSelectedWeapon){
-            selectButton.interactable = false;
-            selectButtonText.text = "Selected";
+        if(DataManager.Instance.CheckHasBoughtItem(CosmeticManager.Instance.weapons[currentWeaponIndex].weaponName)){
+            if(currentWeaponIndex == currentSelectedWeapon){
+                selectButton.interactable = false;
+                selectButtonText.text = "Selected";
+            }else{
+                selectButton.interactable = true;
+                selectButtonText.text = "Select";
+            }
         }else{
+            selectButtonText.text = CosmeticManager.Instance.weapons[currentWeaponIndex].weaponPrice.ToString();
             selectButton.interactable = true;
-            selectButtonText.text = "Select";
         }
         for(int i = 0; i <= maxWeaponAmount; i++){
             if(currentWeaponIndex == i) {
@@ -57,9 +63,20 @@ public class WeaponShopUI : MonoBehaviour
             }
         }
     }
+    
     public void ChangeCurrentWeapon(){
-        currentSelectedWeapon = currentWeaponIndex;
-        CosmeticManager.Instance.ChangeCurrentWeapon(currentWeaponIndex);
+        if(DataManager.Instance.CheckHasBoughtItem(CosmeticManager.Instance.weapons[currentWeaponIndex].weaponName)){
+            Debug.Log("This item has been bought");
+            currentSelectedWeapon = currentWeaponIndex;
+            CosmeticManager.Instance.ChangeCurrentWeapon(currentWeaponIndex);
+        }else{
+            if(DataManager.Instance.playerCoins >= CosmeticManager.Instance.weapons[currentWeaponIndex].weaponPrice){
+                DataManager.Instance.SetBoughtItem(CosmeticManager.Instance.weapons[currentWeaponIndex].weaponName, true);
+                Debug.Log("Set bought item to true");
+                currentSelectedWeapon = currentWeaponIndex;
+                CosmeticManager.Instance.ChangeCurrentWeapon(currentWeaponIndex);
+            }
+        }
         UpdateWeaponUI();
     }
 }

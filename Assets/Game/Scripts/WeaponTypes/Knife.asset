@@ -17,6 +17,6 @@ MonoBehaviour:
   weaponModel: {fileID: 100000, guid: ecd6cb62ed8350e498f9e25d15d9caa3, type: 3}
   weaponSpeed: 12
   weaponExtraRange: 1
-  weaponPrice: 0
+  weaponPrice: 500
   canReturn: 0
   canRotate: 0

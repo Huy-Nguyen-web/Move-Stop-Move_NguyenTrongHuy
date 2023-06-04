@@ -30,7 +30,7 @@ public class Character : GameUnit
     private int[] characterSizePoints = new int[] {2, 6, 16, 28, 40};
     public UnityAction<int> updateCharacterPoint;
     public string characterName;
-    
+    public bool gotPresent;
     public virtual void Attack(){
         TF.LookAt(currentTarget.transform.position);
         if(!isThrowing){
@@ -108,8 +108,6 @@ public class Character : GameUnit
     }
     public void ChangeCharacterName(string characterName){
         this.characterName = characterName;
-        Debug.Log(characterName);
-        
         characterWaypoint.UpdateCharacterName(characterName);
     }
     public void ResizeCharacter(){

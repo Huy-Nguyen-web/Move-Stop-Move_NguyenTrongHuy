@@ -18,6 +18,6 @@ MonoBehaviour:
     type: 3}
   weaponSpeed: 17
   weaponExtraRange: 0
-  weaponPrice: 0
+  weaponPrice: 2500
   canReturn: 0
   canRotate: 0

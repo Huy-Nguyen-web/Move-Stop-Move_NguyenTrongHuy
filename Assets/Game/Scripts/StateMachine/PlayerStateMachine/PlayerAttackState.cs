@@ -32,5 +32,9 @@ public class PlayerAttackState : IState<Player>
         player.currentTarget = null;
         player.animator.SetBool("IsAttack", false);
         player.onHandWeapon.SetActive(true);
+        if(player.gotPresent){
+            player.hitRange = 10f;
+            player.areaCircle.UpdateCircle(player.hitRange/2 + player.weaponType.weaponExtraRange);
+        }
     }
 }

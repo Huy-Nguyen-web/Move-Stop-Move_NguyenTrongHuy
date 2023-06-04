@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4642380065850399839}
   m_Layer: 7
   m_Name: Weapon
-  m_TagString: Hammer
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71b941a0f1dcb04ead510d9b9bf98f8, type: 3}
   m_Name: BatmanPant
   m_EditorClassIdentifier: 
-  skinName: ' Batman Pant'
+  skinName: Batman Pant
   skinDescription: 
   skinMaterial: {fileID: 2100000, guid: d37d7c3593a0ad6468d4dd5f7dfdcf88, type: 2}
   HatModel: {fileID: 0}
