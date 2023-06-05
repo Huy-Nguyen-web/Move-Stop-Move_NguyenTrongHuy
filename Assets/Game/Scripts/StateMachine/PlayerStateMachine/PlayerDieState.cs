@@ -17,7 +17,7 @@ public class PlayerDieState : IState<Player>
         if(exitTimer >= 2.0f){
             //TODO: Show the game over UI
             GameManager.ChangeState(GameManager.GameState.End);
-            GameManager.Instance.GameEnd();
+            GameManager.Instance.GameEnd("Player was killed by: " + player.enemyKiller.characterName);
         }
     }
     public void OnExit(Player player){

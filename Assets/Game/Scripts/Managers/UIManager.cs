@@ -14,8 +14,9 @@ public class UIManager : Singleton<UIManager>
     public Canvas inGameUI;
     public Canvas endGameUI;
     public Player player;
-    [SerializeField] private TMP_InputField inputField;
 
+    [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private TMP_Text announceText;
     private void Start() {
         stateUI.Add(GameState.Menu, mainMenuUI);
         stateUI.Add(GameState.Start, inGameUI);
@@ -29,8 +30,9 @@ public class UIManager : Singleton<UIManager>
         currentState = GameState.Start;
         OpenUI(stateUI, currentState);
     }
-    public void GameEnd(){
+    public void GameEnd(string gameEndMessage){
         currentState = GameState.End;
+        announceText.text = gameEndMessage;
         OpenUI(stateUI, currentState);
     }
     public void OpenWeaponShop(){
