@@ -17,7 +17,7 @@ public class Player : Character
     private int currentSelectedPant = -1;
     private int currentSelectedHat = -1;
     private Material defaultPantMaterial;
-    private Character enemyKiller;
+    public Character enemyKiller;
     private void Start() {
         point = 0;
         defaultPantMaterial = characterPantSkin.material;
@@ -83,7 +83,9 @@ public class Player : Character
     }
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Weapon")){
-            if(weapon == null || (weapon.gameObject != other.gameObject)){
+            if(weapon == null || (weapon.gameObject != other.gameObject))
+            {
+                enemyKiller = other.transform.GetComponent<Weapon>().currentCharacter;
                 SwitchState(playerDieState);
             }
         }else if(other.CompareTag("Present")){

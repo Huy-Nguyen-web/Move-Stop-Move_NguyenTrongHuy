@@ -15,9 +15,9 @@ public class GameManager : Singleton<GameManager>
         currentState = GameState.Start;
         UIManager.Instance.GameStart();
     }
-    public void GameEnd(){
+    public void GameEnd(string gameEndMessage){
         currentState = GameState.End;
-        UIManager.Instance.GameEnd();
+        UIManager.Instance.GameEnd(gameEndMessage);
     }
     public void GameReset(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
