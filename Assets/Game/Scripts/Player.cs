@@ -95,6 +95,12 @@ public class Player : Character
             areaCircle.UpdateCircle(hitRange/2 + weaponType.weaponExtraRange);
         }
     }
+    public override void AddPoint(int pointToGet)
+    {
+        base.AddPoint(pointToGet);
+        DataManager.Instance.AddCoin(5);
+        UIManager.Instance.UpdateCoinAmount(DataManager.Instance.GetCoin());
+    }
     private void ChangeSelectedHat(int index){
         currentSelectedHat = index;
     }

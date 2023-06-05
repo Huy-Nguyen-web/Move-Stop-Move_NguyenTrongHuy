@@ -36,14 +36,23 @@ public class DataManager : Singleton<DataManager>
     public void SetWeaponIndex(int weaponIndex){
         PlayerPrefs.SetInt("playerWeaponIndex", weaponIndex);
     }
-    public void SetCoin(int coins){
-        PlayerPrefs.SetInt("playerCoins", coins);
-    }
     public string GetName(){
         return PlayerPrefs.GetString("playerName");
     }
     public int GetWeaponIndex(){
         return PlayerPrefs.GetInt("playerWeaponIndex");
+    }
+    public void AddCoin(int coins){
+        playerCoins += coins;
+        SetCoin(playerCoins);
+    }
+    public void SubtractCoin(int coins){
+        playerCoins -= coins;
+        if(playerCoins < 0) playerCoins = 0;
+        SetCoin(playerCoins);
+    }
+    public void SetCoin(int coins){
+        PlayerPrefs.SetInt("playerCoins", coins);
     }
     public int GetCoin(){
         return PlayerPrefs.GetInt("playerCoins");

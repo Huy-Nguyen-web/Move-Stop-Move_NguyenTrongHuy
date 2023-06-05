@@ -66,13 +66,14 @@ public class WeaponShopUI : MonoBehaviour
     
     public void ChangeCurrentWeapon(){
         if(DataManager.Instance.CheckHasBoughtItem(CosmeticManager.Instance.weapons[currentWeaponIndex].weaponName)){
-            Debug.Log("This item has been bought");
             currentSelectedWeapon = currentWeaponIndex;
             CosmeticManager.Instance.ChangeCurrentWeapon(currentWeaponIndex);
         }else{
             if(DataManager.Instance.playerCoins >= CosmeticManager.Instance.weapons[currentWeaponIndex].weaponPrice){
                 DataManager.Instance.SetBoughtItem(CosmeticManager.Instance.weapons[currentWeaponIndex].weaponName, true);
-                Debug.Log("Set bought item to true");
+                DataManager.Instance.SubtractCoin(CosmeticManager.Instance.weapons[currentWeaponIndex].weaponPrice);
+
+                UIManager.Instance.UpdateCoinAmount(DataManager.Instance.GetCoin());
                 currentSelectedWeapon = currentWeaponIndex;
                 CosmeticManager.Instance.ChangeCurrentWeapon(currentWeaponIndex);
             }

@@ -101,7 +101,7 @@ public class Character : GameUnit
         characterPantSkin.material = currentPant.skinMaterial;
     }
 
-    public void AddPoint(int pointToGet){
+    public virtual void AddPoint(int pointToGet){
         this.point += pointToGet;
         updateCharacterPoint?.Invoke(this.point);
         ResizeCharacter();

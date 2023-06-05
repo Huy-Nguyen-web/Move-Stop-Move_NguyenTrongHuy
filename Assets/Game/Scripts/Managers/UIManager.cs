@@ -17,6 +17,7 @@ public class UIManager : Singleton<UIManager>
 
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private TMP_Text announceText;
+    [SerializeField] private TMP_Text coinAmountText;
     private void Start() {
         stateUI.Add(GameState.Menu, mainMenuUI);
         stateUI.Add(GameState.Start, inGameUI);
@@ -25,6 +26,7 @@ public class UIManager : Singleton<UIManager>
         stateUI.Add(GameState.End, endGameUI);
         currentState = GameState.Menu;
         OpenUI(stateUI, currentState);
+        UpdateCoinAmount(DataManager.Instance.GetCoin());
     }
     public void GameStart(){
         currentState = GameState.Start;
@@ -51,6 +53,9 @@ public class UIManager : Singleton<UIManager>
     public void ChangeCharacterName(){
         player.ChangeCharacterName(inputField.text);
         PlayerPrefs.SetString("playerName", inputField.text);
+    }
+    public void UpdateCoinAmount(int amount){
+        coinAmountText.text = amount.ToString();
     }
     private void OpenUI(Dictionary<GameState, Canvas> stateUI, GameState currentState){
         foreach(var gameState in stateUI.Keys){

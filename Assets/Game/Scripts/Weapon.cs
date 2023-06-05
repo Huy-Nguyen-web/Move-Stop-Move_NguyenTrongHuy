@@ -18,7 +18,9 @@ public class Weapon : GameUnit
     [HideInInspector] public Character currentCharacter;
     public void OnInit(Character character){
         UpdateWeapon(character);
-        transform.position = character.attackPosition.position;
+        // transform.position = character.attackPosition.position;
+        // transform.rotation = character.transform.rotation;
+        transform.position = character.transform.position;
         transform.rotation = character.transform.rotation;
         throwingPosition = transform.position;
 
@@ -39,7 +41,6 @@ public class Weapon : GameUnit
         if(currentWeapon != null && currentWeapon.canRotate){
             transform.Rotate(0, -1000 * Time.deltaTime, 0);
         }
-
         if(!isReturning){
             GoForward();
         }else{
