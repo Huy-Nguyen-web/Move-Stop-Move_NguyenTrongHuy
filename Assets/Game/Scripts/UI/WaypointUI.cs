@@ -46,8 +46,12 @@ public class WaypointUI : GameUnit
         float minY = rectSize.rect.height/2 + offset;
         float maxY = Screen.height - minY;
 
-        Vector2 pos = Camera.main.WorldToScreenPoint(target.position);
+        Vector3 pos = Camera.main.WorldToScreenPoint(target.position);
 
+        if(pos.z < 0){
+            pos.y = Screen.height - pos.y;
+            pos.x = Screen.width - pos.x;
+        }
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
 
         float offsetY = 100;
@@ -55,7 +59,7 @@ public class WaypointUI : GameUnit
 
         newPosY = Mathf.Clamp(newPosY, minY, maxY);
 
-        Vector2 dir = pos - new Vector2(Screen.width/2, Screen.height/2);
+        Vector3 dir = pos - new Vector3(Screen.width/2, Screen.height/2, 0f);
         if(Mathf.Abs(pos.x - minX) < 0.5f || Mathf.Abs(pos.x - maxX) < 0.5f || Mathf.Abs(pos.y - minY) < 0.5f || Mathf.Abs(pos.y - maxY) < 0.5f){
             arrowImage.enabled = true;
         }else{

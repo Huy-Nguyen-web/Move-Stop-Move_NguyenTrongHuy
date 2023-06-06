@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
@@ -8,8 +9,17 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private int maxNumberOfEnemy;
     [SerializeField] private int currentNumberOfEnemy;
     [SerializeField] private string[] characterRandomNames;
+    [SerializeField] private Present present;
     private int numberOfEnemyInQueue;
-    public void Start(){
+    public void Awake(){
+        // numberOfEnemyInQueue = maxNumberOfEnemy;
+        // for(int i = 0; i < currentNumberOfEnemy; i++){
+        //     Enemy enemy = SpawnEnemy();
+        //     enemy.OnInit();
+        // }
+        OnInit();
+    }
+    public void OnInit(){
         numberOfEnemyInQueue = maxNumberOfEnemy;
         for(int i = 0; i < currentNumberOfEnemy; i++){
             Enemy enemy = SpawnEnemy();
@@ -31,25 +41,32 @@ public class LevelManager : Singleton<LevelManager>
     public void RespawnEnemy(){
         numberOfEnemyInQueue--;
         if(numberOfEnemyInQueue < currentNumberOfEnemy) return;
-        
         Enemy enemy = SpawnEnemy();
         enemy.OnInit();
     }
-    public void LoadLevel(int level){
+    // public void LoadLevel(int level){
 
-    }
-    public void OnInit(){
+    // }
+    // public void OnInit(){
 
-    }
+    // }
     public string GetRandomName(){
         string characterRandomName = characterRandomNames[Random.Range(0, characterRandomNames.Length - 1)]; 
         return characterRandomName;
     }
-    public void OnReset(){
+    // public void OnReset(){
 
-    }
-
+    // }
     public Vector3 GetRandomPoint(){
         return Vector3.zero;
+    }
+    
+    private IEnumerator SpawnPresent(){
+        yield return new WaitForSeconds(5f);
+        present.gameObject.SetActive(true);
+    }
+    public void ResetPresent(){
+        present.gameObject.SetActive(false);
+        StartCoroutine(SpawnPresent());
     }
 }

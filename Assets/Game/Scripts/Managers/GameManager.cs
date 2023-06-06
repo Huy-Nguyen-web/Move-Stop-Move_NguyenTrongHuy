@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
         UIManager.Instance.GameEnd(gameEndMessage);
     }
     public void GameReset(){
+        SimplePool.CollectAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public static void ChangeState(GameState gameState) => GameManager.Instance.currentState = gameState;

@@ -24,12 +24,14 @@ public class UIManager : Singleton<UIManager>
         stateUI.Add(GameState.Weapon, weaponShopUI);
         stateUI.Add(GameState.Skin, skinShopUI);
         stateUI.Add(GameState.End, endGameUI);
-        currentState = GameState.Menu;
+        // currentState = GameState.Menu;
+        MainMenu();
         OpenUI(stateUI, currentState);
         UpdateCoinAmount(DataManager.Instance.GetCoin());
     }
     public void GameStart(){
         currentState = GameState.Start;
+        SoundManager.Instance.PlayMusic(SoundManager.Instance.gameplayMusic);
         OpenUI(stateUI, currentState);
     }
     public void GameEnd(string gameEndMessage){
@@ -47,6 +49,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void MainMenu(){
         currentState = GameState.Menu;
+        SoundManager.Instance.PlayMusic(SoundManager.Instance.mainmenuMusic);
         player.DeleteTempSkin();
         OpenUI(stateUI, currentState);
     }

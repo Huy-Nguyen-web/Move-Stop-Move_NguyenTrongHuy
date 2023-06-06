@@ -89,7 +89,8 @@ public class Player : Character
                 SwitchState(playerDieState);
             }
         }else if(other.CompareTag("Present")){
-            other.gameObject.SetActive(false);
+            // other.gameObject.SetActive(false);
+            LevelManager.Instance.ResetPresent();
             gotPresent = true;
             hitRange = 50f;
             areaCircle.UpdateCircle(hitRange/2 + weaponType.weaponExtraRange);
